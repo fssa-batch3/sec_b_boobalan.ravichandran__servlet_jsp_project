@@ -39,7 +39,7 @@ public class CreateUserServlet extends HttpServlet {
 		try {
 			userService.createUser(user);
 			System.out.println("User register successfully");
-			response.sendRedirect(request.getContextPath() + "/register");
+			response.sendRedirect(request.getContextPath() + "/login");
 		} catch (ServiceException | ValidationException e) {
 			e.printStackTrace();
 			throw new ServletException(e);

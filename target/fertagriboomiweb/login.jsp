@@ -167,13 +167,12 @@
 			<div>
 				<div class="btn">
 
-
-					<button type ="submit" id="userLoginDel">
+					<button type="submit" id="userLoginDel">
 						Login
 					</button>
 				</div>
 				<h4 class="singup">
-					New to FAB?<a href="../user/user_signup.html">Create an account</a>
+					New to FAB?<a href="user/register">Create an account</a>
 				</h4>
 			</div>
 		</form>

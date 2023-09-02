@@ -23,7 +23,7 @@ import in.fssa.fertagriboomi.service.ProductService;
 /**
  * Servlet implementation class Servlet
  */
-@WebServlet("/products")
+@WebServlet("/home_page")
 public class GetAllProductsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -33,7 +33,7 @@ public class GetAllProductsServlet extends HttpServlet {
 		List<Product> productList = new ProductService().getAllProducts();
 		request.setAttribute("PRODUCTLIST", productList);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/product_list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/home_page.jsp");
 		dispatcher.forward(request, response);
 
 	}

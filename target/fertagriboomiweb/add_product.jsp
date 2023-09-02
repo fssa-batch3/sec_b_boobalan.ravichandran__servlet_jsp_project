@@ -70,11 +70,17 @@ button[type="submit"]:hover {
 	<h1>Add New Product</h1>
 
 	<form action="product/create" method="post">
-		<label>Product Name:</label> <input type="text" name="name"
-			required="true"> <label>Product Weight:</label> <input
-			type="text" name="product_weight" required="true"> <label>Product
-			Category:</label> <input type="number" name="product_category"
-			required="true"> <label>Description:</label>
+		<label>Product Name:</label>
+		 <input type="text" name="name"
+			required="true"> 
+			<label>Product Weight:</label> 
+			<input
+			type="text" name="product_weight" required="true">
+			 <label>Product
+			Category:</label> 
+			<input type="number" name="product_category"
+			required="true"> 
+			<label>Description:</label>
 		<textarea name="description" rows="4" required="true"></textarea>
 
 		<label>Benefits:</label>

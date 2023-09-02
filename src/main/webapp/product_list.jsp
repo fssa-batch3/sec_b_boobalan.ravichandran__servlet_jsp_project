@@ -1,124 +1,94 @@
 <%@page import="in.fssa.fertagriboomi.model.Product"%>
 <%@page import="java.util.List"%>
-<%@page import="in.fssa.fertagriboomi.service.ProductService"%>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Product List</title>
+ <link rel="icon" type="image/x-icon" href="https://iili.io/J9HTxWb.png">
+<title>Insert title here</title>
 <style>
-body {
-	font-family: Arial, sans-serif;
-}
-
-h1 {
+a div.product_cart {
+	border: 3px sold black;
+	padding: 20px 30px 20px 15px;
+	margin: 50px 30px;
+	width: 20vw;
+	border: 1px solid rgb(183, 183, 183);
+	justify-content: center;
 	text-align: center;
-	margin-top: 20px;
-	color: #E30B5D;
+	min-height: 48vh;
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+		rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
-table {
-	width: 100%;
-	border-collapse: collapse;
-	margin-top: 20px;
+.product_cart img {
+	width: 18vw;
+	height: 32vh;
 }
 
-th, td {
-	border: 1px solid #dddddd;
-	padding: 8px;
-	text-align: center;
+.price_container {
+margin-top: 2.35vw;
+	display: flex;
+	margin-left: 4.4vw;
 }
 
-th {
-	 background-color: black;
-	 color:#E30B5D;
-	 height:60px;
-	 font-size:20px;
+.price_container h3 {
+	color: #e11e55;
 }
 
-tr:nth-child(even) {
-	background-color: #f2f2f2;
+.price_container p {
+	
+	margin-left: .6vw;
+	font-size: 19px;
+	color: #779e61;
 }
 
-tr:hover {
-	background-color: #ddd;
-}
-button{
-margin:5vh 0 5vh 80vw;
-height:50px;
-width:150px;
-
-background-color: black;
-border: 2px solid black;
-
-}
-button a{
-text-decoration:none;
-font-size:20px;
-color:#f60953;
-
-}
-button a:hover{
-color:black;
-
-}
-button:hover{
-color:black;
-border: 2px solid #f60953;
-background-color: white;
+a {
+	text-decoration: none;
 }
 
+.product_container {
+	padding: 5vh 5vw 5vh 5vw;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin-top: 4vh;
+}
 </style>
 </head>
+
 <body>
-	<h1>List of Products</h1>
-	<br>
-
+	<%@ include file="/header.jsp"%>
 	<%
-	List<Product> productList = (List<Product>) request.getAttribute("PRODUCTLIST");
+	List<Product> productList = (List<Product>) request.getAttribute("CATEGORYPRODUCTS");
 	%>
-
-	<table>
-		<tr>
-			<th>Name</th>
-			<th>Application</th>
-			<th>Benefits</th>
-			<th>Description</th>
-			<th>Image</th>
-			<th>Pages</th>
-			<th>Staus</th>
-		</tr>
-
+	<div class="product_container">
 		<%
 		for (Product product : productList) {
 		%>
-		<tr>
-			<td><%=product.getName()%></td>
-			<td><%=product.getApplication()%></td>
-			<td><%=product.getBenefits()%></td>
-
-
-			<td><%=product.getDescription()%></td>
-			<td><img src="<%=product.getImageURL()%>" alt="<%=product.getName()%> Image" width="130" height="130"></td>
-			<td>
-			<a
-				href="product/details?product_id=<%=product.getId()%>">Details</a>
-				<a href="product/edit?product_id=<%=product.getId()%>">Update</a>
-				<a href="product/delete?product_id=<%=product.getId()%>" >Delete</a>
-			</td>
-			<td> <%=product.isActive() %></td>
-		</tr>
+		<a href="product/details?product_id=<%=product.getId()%>">
+			<div class="product_cart">
+				<div>
+					<img src="<%=product.getImageURL()%>" alt="<%=product.getName()%>">
+				</div>
+				<div>
+					<div>
+						<h3><%=product.getName()%></h3>
+					</div>
+					<div class="price_container">
+						<h3>Price: &#8377;</h3>
+						<p><%=product.getPrice()%></p>
+					</div>
+				</div>
+			</div>
+		</a>
 		<%
 		}
 		%>
-	</table>
-	
-	<button class="create_btn"><a href="product/new">Create</a></button>
+	</div>
+
+
 </body>
 </html>
-

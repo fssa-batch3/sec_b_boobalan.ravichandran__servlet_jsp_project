@@ -36,7 +36,7 @@ label {
 	color: #444;
 }
 
-input[type="text"], input[type="url"], input[type="number"], textarea {
+input[type="text"], input[type="url"], input[type="number"], textarea, select {
 	width: 100%;
 	padding: 10px;
 	margin-bottom: 20px;
@@ -69,17 +69,37 @@ button[type="submit"]:hover {
 <body>
 	<h1>Add New Product</h1>
 
-	<form action="product/create" method="post">
+	<form action="create" method="post">
 		<label>Product Name:</label>
 		 <input type="text" name="name"
 			required="true"> 
 			<label>Product Weight:</label> 
 			<input
 			type="text" name="product_weight" required="true">
-			 <label>Product
-			Category:</label> 
-			<input type="number" name="product_category"
-			required="true"> 
+			 <label for="product_category">Product Category:</label>
+<select name="product_category" id="product_category" required="true">
+    <option value="1">DHANUKA</option>
+    <option value="2">DOW AGRO SCIENCE</option>
+    <option value="3">TATA RALLIS</option>
+    <option value="4">ADAMA</option>
+    <option value="5">BAYER</option>
+    <option value="6">ARIES AGRO</option>
+    <option value="7">INFOIL</option>
+    <option value="8">RINUJA</option>
+    <option value="9">BIO INSECTICIDES</option>
+    <option value="10">BIO FUNGICIDES</option>
+    <option value="11">BIO NEMATICIDES</option>
+    <option value="12">BIO VIRCIDES</option>
+    <option value="13">MAJOR NURIENTS</option>
+    <option value="14">SECONDARY NURIENTS</option>
+    <option value="15">GROWTH PROMOTERS</option>
+    <option value="16">GROWTH RETARDANTS</option>
+    <option value="17">ORGANIC FERTILIZERS</option>
+    <option value="18">BIO FERTILIZERS</option>
+    <option value="19">ANTI STRESSING AGENTS</option>
+    <option value="20">MICRO NUTRIENTS</option>
+</select>
+
 			<label>Description:</label>
 		<textarea name="description" rows="4" required="true"></textarea>
 

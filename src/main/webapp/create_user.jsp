@@ -64,7 +64,7 @@ button[type="submit"]:hover {
 </head>
 <body>
  <h1>Registration Form</h1>
-    <form action="user/create" method="post">
+    <form action="create" method="post">
         <div>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>

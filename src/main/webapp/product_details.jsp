@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <link rel="icon" type="image/x-icon" href="https://iili.io/J9HTxWb.png">
 <title>Product Details</title>
 <style>
     body {
@@ -13,73 +14,119 @@
         margin: 0;
         padding: 0;
     }
-    h1 {
+    .container {
+        width: 80%;
+        margin: 20px auto;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding-botton:50px;
+        height:100%;
+    }
+    .header {
         background-color: green;
         color: #fff;
         padding: 10px;
         text-align: center;
     }
-    table {
-        width: 60%;
-        height:100%;
-        margin: 20px auto;
-        border-collapse: collapse;
-        background-color: #fff;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    th, td {
-        padding: 10px;
-        text-align: left;
-    }
-    th {
-        background-color: green;
-        color: #fff;
-    }
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
+    .product-details {
+        display: flex;
+
+        align-items: flex-start;
+        padding: 50px 20px;
+        width:80%;
+        
     }
     img {
-        display: block;
-        margin: 0 auto;
-        max-width: 220px;
-        max-height: 200px;
+        width: 450px;
+        height: 400px;
+        margin-right: 20px;
     }
+    .product-info {
+        margin-left:10vw;
+        
+    }
+    .product-name {
+        font-size: 35px;
+        font-weight: bold;
+        color:#5e6f22;
+            margin-top: 100px;
+    }
+    .manufacturer {
+        margin-top: 20px;
+         font-size: 25px;
+         width:500px;
+    }
+    .buy-button {
+        margin-top: 20px;
+        
+    }
+    .description {
+        margin-top: 5vh;
+           margin-left:6vw;
+           width:80%;
+    }
+    .application {
+        margin-top: 5vh;
+           margin-left:6vw;
+            width:80%;
+    }
+    .benefits {
+        margin-top: 5vh;
+         width:80%;
+           margin-left:6vw;
+            margin-bottom:8vw;
+    }
+    .buy-button button{
+    margin-top: 50px;
+    width:300px;
+    height:50px;
+     font-size: 18px;
+     background-color:#382798;
+        color:white;
+       border-radius: 10px;
+    }
+    .details_cart{
+    padding-bottom: 40px;
+    }
+   .decription strong{
+    font-size: 28px;
+   }
 </style>
 </head>
 <body>
-    <h1>Product Details</h1>
-    <%
+   <%
     	Product product = (Product) request.getAttribute("productDetails");
     %>
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Details</th>
-        </tr>
-        <tr>
-            <td>Product ID:</td>
-            <td><%= product.getId() %></td>
-        </tr>
-        <tr>
-            <td>Product Name:</td>
-            <td><%= product.getName()%></td>
-        </tr>
-        <tr>
-            <td>Product Description:</td>
-            <td><%= product.getDescription()%></td>
-        </tr>
-        <tr>
-            <td>Product Application:</td>
-            <td><%= product.getApplication()%></td>
-        </tr>
-        <tr>
-            <td>Product Benefits:</td>
-            <td><%= product.getBenefits() %></td>
-        </tr>
-        <tr>
-            <td>Product Image:</td>
-            <td><img src="<%= product.getImageURL()%>" alt="<%= product.getName()%> Image" ></td>
-        </tr>
-    </table>
+    <div class="container">
+        <div class="header">
+            <h1>Product Details</h1>
+        </div>
+        <div class="product-details">
+            <div class="product-image">
+                <img src="<%= product.getImageURL()%>" alt="<%= product.getName()%>">
+            </div>
+            <div class="product-info">
+                <div class="product-name"><%= product.getName()%></div>
+                <div class="manufacturer">Manufacturer: <%= product.getManufacture()%></div>
+                
+                 <div class="manufacturer">Price: <%= product.getPrice() %></div>
+                <div class="buy-button">
+                    <button>Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="details_cart">
+        <div class="description">
+            <h2>Description:</h2><br><%= product.getDescription()%>
+        </div>
+        <div class="application">
+            <h2>Application:</h2><br><%= product.getApplication()%>
+        </div>
+        <div class="benefits">
+            <h2>Benefits:</h2><br><%= product.getBenefits() %>
+        </div>
+        
+        </div>
+    </div>
 </body>
 </html>

@@ -46,7 +46,8 @@ public class CreateProductServlet extends HttpServlet {
 
 		Price priceList = new Price();
 		priceList.setPrice(price);
-		product.setPrice(priceList);
+		int priceValue = priceList.getPrice();
+		product.setPrice(priceValue);
 
 		ProductService productService = new ProductService();
 		PrintWriter out = response.getWriter();

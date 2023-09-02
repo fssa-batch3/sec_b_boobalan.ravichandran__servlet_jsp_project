@@ -26,7 +26,7 @@ public class LoginUserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//System.out.println("enter login details");
+	    System.out.println("enter login details");
 		
 		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 		rd.forward(request, response);
@@ -44,7 +44,10 @@ public class LoginUserServlet extends HttpServlet {
 			UserService userService = new UserService();
 			if (userService.findEmailAndPasswordExists(email, password)) {
 
-				response.sendRedirect(request.getContextPath() + "/products");
+				request.getSession().setAttribute("LOGGEDUSER", email);
+				System.out.print(request.getSession().getAttribute("LOGGEDUSER"));
+				
+				response.sendRedirect(request.getContextPath() + "/home_page");
 			}
 		} catch (ServiceException e) {
 			e.printStackTrace();
