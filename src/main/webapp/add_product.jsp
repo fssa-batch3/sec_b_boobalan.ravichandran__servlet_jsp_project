@@ -27,6 +27,7 @@ form {
 	padding: 30px 50px 30px 30px;
 	border-radius: 5px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	margin-bottom:5vh;
 }
 
 label {
@@ -50,7 +51,7 @@ textarea {
 }
 
 button[type="submit"] {
-	width: 100%;
+	width: 104%;
 	padding: 10px;
 	background-color: #007bff;
 	border: none;
@@ -63,6 +64,7 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
 	background-color: #0056b3;
+	box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 </style>
 </head>

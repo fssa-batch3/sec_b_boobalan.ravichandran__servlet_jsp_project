@@ -387,7 +387,7 @@ body {
 		</header>
 		<div class="nav">
 
-			<a href=""><button class="btn1">HOME</button></a>
+			<a href="home_page"><button class="btn1">HOME</button></a>
 			<div class="dropdown">
 				<button class="dropbtn">BRANDS</button>
 				<div class="dropdown-content">

@@ -82,6 +82,9 @@ width:90vw;
 margin-left:5vw;
 margin-top:4vh;
 }
+.baner{
+margin-bottom:10vh;
+}
 
 </style>
 </head>
@@ -125,8 +128,7 @@ margin-top:4vh;
 			<td><%=product.getDescription()%></td>
 			<td><img src="<%=product.getImageURL()%>" alt="<%=product.getName()%> Image" width="130" height="130"></td>
 			<td>
-			<a
-				href="product/details?product_id=<%=product.getId()%>">Details</a>
+			<a href="product/details?product_id=<%=product.getId()%>">Details</a>
 				<a href="product/edit?product_id=<%=product.getId()%>">Update</a>
 				<a href="product/delete?product_id=<%=product.getId()%>" >Delete</a>
 			</td>

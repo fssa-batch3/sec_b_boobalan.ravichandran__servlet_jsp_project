@@ -42,7 +42,7 @@
         margin-right: 20px;
     }
     .product-info {
-        margin-left:10vw;
+        margin-left:6vw;
         
     }
     .product-name {
