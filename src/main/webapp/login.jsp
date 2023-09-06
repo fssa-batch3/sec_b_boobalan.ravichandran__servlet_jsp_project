@@ -4,18 +4,29 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+	rel="stylesheet">
 <title>User Login</title>
 <style>
 * {
 	font-family: 'Lora', serif;
 }
 
+body {
+	font-family: Arial, sans-serif;
+}
+
 .box {
-	height: 100vh;
+	height: 93vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-family: 'Lora', serif;
+	margin-left: 5vw;
 }
 
 * {
@@ -24,8 +35,8 @@
 
 .form {
 	background-color: white;
-	width: 400px;
-	min-height: 400px;
+	width: 30vw;
+	min-height: 50vh;
 	padding: 30px;
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -112,15 +123,14 @@
 }
 
 .btn button {
-	background-color: green;
-	padding: 10px 35px;
+	background-color: rgb(7, 113, 67);
+	padding: 1.5vh 5vw;
 	border: none;
 	border-radius: 3px;
 	font-size: 18px;
-	margin-left: 20vw;
-		color: white;
+	margin-left: 16vw;
+	color: white;
 }
-
 
 .showLabel {
 	font-size: 17px;
@@ -129,7 +139,7 @@
 .btn button:hover {
 	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
 		rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-	background-color: rgb(3, 155, 3);
+	background-color: rgba(10, 160, 95, 0.904);
 }
 
 .singup {
@@ -146,41 +156,84 @@
 .singup a:hover {
 	color: rgb(255, 0, 93);
 }
-.logo_img{
-width:20vw;
-height:12.5vh;
-margin-left: 3vw;
+
+.logo_img {
+	width: 20vw;
+	height: 12.5vh;
+	margin-left: 3vw;
+}
+
+.error_div {
+	margin-top: -15vh;
+	text-align: center;
+	margin-left: 5vw;
+}
+
+.error_div p {
+	color: rgb(255, 14, 14);
+	font-size: 19px;
+}
+
+.login_container {
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+.login_logo img {
+	width: 45vw;
+	height: 80vh;
+	margin-top: 5vh;
 }
 </style>
 </head>
 <body>
-	<div class="box">
-		<form action="login" class="form" method="post">
-               <a href="home_page">  <img src="https://iili.io/Hyihp7S.md.png" alt="logo for fert agri boomi" class="logo_img"/></a>
-			<h1>Sign in</h1>
-			<div class="form-group">
-				<input type="text" id="email" class="form-control" name="email" required>
-				<label for="mobile" class="form-label">Email Address</label>
-			</div>
-			
-			<div class="form-group form-group3">
-				<input type="password" id="txtPassword" name="password" class="form-control"
-					required> <label for="txtPassword" class="form-label">Enter
-					Your Password</label>
-			</div>
+	<div class="login_container">
+		<div class="login_logo">
+			<img src="https://iili.io/J97TJJs.png" alt="login icon">
+		</div>
+		<div>
+			<div class="box">
+				<form action="login" class="form" method="post">
+					<a href="index"> <img src="https://iili.io/Hyihp7S.md.png"
+						alt="logo for fert agri boomi" class="logo_img" /></a>
+					<h1>Sign in</h1>
+					<div class="form-group">
+						<input type="text" id="email" class="form-control" name="email"
+							required> <label for="mobile" class="form-label">Email
+							Address</label>
+					</div>
 
-			<div>
-				<div class="btn">
+					<div class="form-group form-group3">
+						<input type="password" id="txtPassword" name="password"
+							class="form-control" required> <label for="txtPassword"
+							class="form-label">Enter Your Password</label>
+					</div>
 
-					<button type="submit" id="userLoginDel">
-						Login
-					</button>
-				</div>
-				<h4 class="singup">
-					New to FAB?<a href="user/register">Create an account</a>
-				</h4>
+					<div>
+						<div class="btn">
+
+							<button type="submit" id="userLoginDel">Login</button>
+						</div>
+						<h4 class="singup">
+							New to FAB?<a href="user/register">Create an account</a>
+						</h4>
+					</div>
+				</form>
 			</div>
-		</form>
+			<%
+			String errorMessage = request.getParameter("error");
+			%>
+			<%
+			if (errorMessage != null) {
+			%>
+			<div class="error_div">
+				<p><%=errorMessage%></p>
+			</div>
+			<%
+			}
+			%>
+		</div>
 	</div>
 </body>
 </html>

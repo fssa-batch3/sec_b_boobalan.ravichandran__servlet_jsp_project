@@ -146,13 +146,18 @@
 .singup a:hover {
 	color: rgb(255, 0, 93);
 }
+.logo_img{
+width:20vw;
+height:12.5vh;
+margin-left: 3vw;
+}
 </style>
 </head>
 <body>
 	<div class="box">
 		<form action="login" class="form" method="post">
-
-			<h1>User Login</h1>
+               <a href="home_page">  <img src="https://iili.io/Hyihp7S.md.png" alt="logo for fert agri boomi" class="logo_img"/></a>
+			<h1>Sign in</h1>
 			<div class="form-group">
 				<input type="text" id="email" class="form-control" name="email" required>
 				<label for="mobile" class="form-label">Email Address</label>

@@ -40,9 +40,12 @@ public class CreateUserServlet extends HttpServlet {
 			userService.createUser(user);
 			System.out.println("User register successfully");
 			response.sendRedirect(request.getContextPath() + "/login");
-		} catch (ServiceException | ValidationException e) {
-			e.printStackTrace();
-			throw new ServletException(e);
+		} catch (ServiceException  e) {
+//			e.printStackTrace();
+//			throw new ServletException(e);
+			String getError = e.getMessage();
+			String errorArray[] = getError.split(":");
+			response.sendRedirect("register?error=" + errorArray[1]);
 		}
 		
 	}

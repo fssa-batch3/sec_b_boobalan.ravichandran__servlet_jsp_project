@@ -33,7 +33,7 @@ public class DeleteProductServlet extends HttpServlet {
 		try {
 			productService.deleteProduct(productId);
 			//out.println("Product Deleted Successfully");
-			response.sendRedirect(request.getContextPath() + "/products");
+			response.sendRedirect(request.getContextPath() + "/index");
 			
 		}catch (ServiceException e) {
 			e.printStackTrace();

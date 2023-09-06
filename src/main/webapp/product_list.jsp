@@ -6,89 +6,78 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
- <link rel="icon" type="image/x-icon" href="https://iili.io/J9HTxWb.png">
-<title>Insert title here</title>
-<style>
-a div.product_cart {
-	border: 3px sold black;
-	padding: 20px 30px 20px 15px;
-	margin: 50px 30px;
-	width: 20vw;
-	border: 1px solid rgb(183, 183, 183);
-	justify-content: center;
-	text-align: center;
-	min-height: 48vh;
-	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-		rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Product List</title>
+<link rel="icon" type="image/x-icon" href="https://iili.io/J9HTxWb.png">
 
-.product_cart img {
-	width: 18vw;
-	height: 32vh;
-}
+<link rel="stylesheet" href="./css/header.css">
+<link rel="stylesheet" href="./css/product_list.css">
 
-.price_container {
-margin-top: 2.35vw;
-	display: flex;
-	margin-left: 4.4vw;
-}
-
-.price_container h3 {
-	color: #e11e55;
-}
-
-.price_container p {
-	
-	margin-left: .6vw;
-	font-size: 19px;
-	color: #779e61;
-}
-
-a {
-	text-decoration: none;
-}
-
-.product_container {
-	padding: 5vh 5vw 5vh 5vw;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	margin-top: 4vh;
-}
-</style>
 </head>
 
 <body>
-	<%@ include file="/header.jsp"%>
+
+	<%
+	String loggedUserUniqueEmail = (String) request.getSession().getAttribute("LOGGEDUSER");
+	%>
+	<%
+	if (loggedUserUniqueEmail == null) {
+	%>
+	<jsp:include page="/header.jsp"></jsp:include>
+	<%
+	} else {
+	%>
+	<jsp:include page="/after_login_header.jsp"></jsp:include>
+	<%
+	}
+	%>
+
 	<%
 	List<Product> productList = (List<Product>) request.getAttribute("CATEGORYPRODUCTS");
 	%>
-	<div class="product_container">
-		<%
-		for (Product product : productList) {
-		%>
-		<a href="product/details?product_id=<%=product.getId()%>">
-			<div class="product_cart">
-				<div>
-					<img src="<%=product.getImageURL()%>" alt="<%=product.getName()%>">
-				</div>
-				<div>
-					<div>
-						<h3><%=product.getName()%></h3>
-					</div>
-					<div class="price_container">
-						<h3>Price: &#8377;</h3>
-						<p><%=product.getPrice()%></p>
-					</div>
-				</div>
-			</div>
-		</a>
-		<%
-		}
-		%>
-	</div>
 
+
+
+	<div class="insecticide">
+
+		<div class="offers1">
+			<%
+			if (productList != null && !productList.isEmpty()) {
+				for (Product product : productList) {
+			%>
+			<div class="today" data-id="product_unique_id">
+				<a href="product/details?product_id=<%=product.getId()%>"> <img
+					src="<%=product.getImageURL()%>" alt="<%=product.getName()%>">
+					<p><%=product.getName()%></p>
+					<div class="star"></div>
+					<div class="pricecontain">
+						<div class="price">
+							<h3>Special Price:</h3>
+							<%
+							int newPrice = product.getPrice() - 270;
+							%>
+
+							<h4>
+								&#8377;
+								<%=newPrice%></h4>
+						</div>
+
+					</div>
+					<div class="div_save"></div>
+				</a>
+			</div>
+			<%
+			}
+			}
+			%>
+		</div>
+	</div>
 
 </body>
 </html>

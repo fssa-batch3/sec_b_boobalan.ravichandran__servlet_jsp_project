@@ -56,7 +56,7 @@ public class CreateProductServlet extends HttpServlet {
 
 			productService.createProduct(product);
 			out.println("Product created successfully");
-			response.sendRedirect(request.getContextPath() + "/home_page");
+			response.sendRedirect(request.getContextPath() + "/index");
 
 		} catch (ServiceException | ValidationException e) {
 

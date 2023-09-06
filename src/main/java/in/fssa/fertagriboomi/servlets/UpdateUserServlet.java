@@ -45,7 +45,7 @@ public class UpdateUserServlet extends HttpServlet {
 		    
 		    out.println("User updated successfully");
 			response.sendRedirect(request.getContextPath() + "/profile_details");
-		} catch (ServiceException | ValidationException e) {
+		} catch (ServiceException  e) {
 			e.printStackTrace();
 			throw new ServletException(e);
 		}

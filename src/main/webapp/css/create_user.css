@@ -1,0 +1,203 @@
+@charset "ISO-8859-1";
+
+* {
+	font-family: 'Lora', serif;
+}
+
+.box {
+	height: 97vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+}
+
+.form {
+	background-color: white;
+	width: 450px;
+	min-height: 400px;
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.form img {
+	width: 200px;
+	height: 80px;
+	display: block;
+	margin: auto;
+}
+
+.form h1 {
+	font-weight: 600;
+	margin-top: 10px;
+	margin-bottom: 40px;
+	font-size: 1.625em;
+	text-align: center;
+}
+
+.form-group {
+	height: 32px;
+	margin-bottom: 40px;
+	margin-top: 20px;
+	position: relative;
+}
+
+.form-control {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 92%;
+	height: 100%;
+	background: none;
+	border: 1px solid gray;
+	outline: none;
+	border-radius: 3px;
+	padding: 5px 16px;
+	z-index: 1;
+	font-size: 16px;
+}
+
+.form-label {
+	position: absolute;
+	top: 11px;
+	left: 15px;
+	font-size: 16px;
+	color: hwb(0 19% 81%);
+	background-color: white;
+	padding: 0 6px;
+	transition: .2s;
+}
+
+.form-control:focus+.form-label {
+	top: -9px;
+	z-index: 5;
+	color: #184ac9;
+	font-weight: 500;
+}
+
+.form-control:focus {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3)
+		0px 1px 3px -1px;
+}
+
+.form-control:valid {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3)
+		0px 1px 3px -1px;
+	background: none;
+}
+
+.form-control:not(:focus):valid+label {
+	top: -9px;
+	z-index: 5;
+}
+
+.btn1 button {
+	background-color: green;
+	border: none;
+	padding: 12px 50px;
+	border-radius: 3px;
+	display: flex;
+	margin: auto;
+	color: white;
+	font-weight: 600;
+	font-size: 18px;
+}
+
+.btn1 button:hover {
+	background-color: rgb(3, 172, 3);
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+		rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+a {
+	text-decoration: none;
+}
+
+.showLabel {
+	font-size: 15px;
+}
+
+.password_valid {
+	margin-bottom: 5px;
+}
+
+.create_lable {
+	display: flex;
+}
+
+.create_lable input {
+	margin-right: 1vw;
+}
+
+.logo_img {
+	width: 20vw;
+	height: 12.5vh;
+	margin-left: 3vw;
+}
+
+.error_div {
+	margin-top: -5vh;
+	text-align: center;
+}
+
+.error_div p {
+	color: rgb(255, 14, 14);
+	font-size: 19px;
+}
+
+.password_valid input[type="checkbox"] {
+	/* Change the color of the checkbox when it is checked */
+	--checkbox-color-checked: green;
+	/* Change the color of the checkbox when it is not checked */
+	--checkbox-color-unchecked: gray;
+	/* Set the size of the checkbox */
+	width: 15px;
+	height: 15px;
+	/* Remove the default browser styling */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	/* Create the custom checkbox */
+	border: 1px solid var(--checkbox-color-unchecked);
+	border-radius: 2px;
+	background-color: white;
+	transition: border-color 0.2s ease-in-out;
+	/* Position the checkmark inside the checkbox */
+	position: relative;
+}
+
+/* Style the checkmark inside the checkbox */
+.password_valid input[type="checkbox"]::after {
+	content: "\2705"; /* Unicode character code for checkmark emoji */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 10px;
+	opacity: 0;
+	transition: opacity 0.2s ease-in-out;
+}
+
+/* Show the checkmark when the checkbox is checked */
+.password_valid input[type="checkbox"]:checked::after {
+	opacity: 1;
+}
+
+/* Change the border color when the checkbox is checked */
+.password_valid input[type="checkbox"]:checked {
+	border-color: var(--checkbox-color-checked);
+}
+
+/* Show the checkmark when the checkbox is checked
+  .password_valid input[type="checkbox"]:checked::after {
+    opacity: 1;
+  }
+   */
+
+/* ----------/@media  start/-------------==============*/
+@media screen and (max-width:400px) {
+	.form {
+		box-shadow: none;
+	}
+}

@@ -17,11 +17,11 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Invalidate the user's session
-		  request.getSession().removeAttribute("LOGGEDUSER");
+		    request.getSession().removeAttribute("LOGGEDUSER");
 	        request.getSession().invalidate();
 
 	        // Redirect the user to the login page or any other appropriate page
-	        response.sendRedirect(request.getContextPath() + "/home_page");
+	        response.sendRedirect(request.getContextPath() + "/index");
     }
 
 }

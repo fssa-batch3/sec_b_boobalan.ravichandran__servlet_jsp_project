@@ -38,8 +38,9 @@ public class EditProductServlet extends HttpServlet {
 			rd.forward(request, response);
 		
 		} catch (ServiceException | ValidationException e) {
-		
 			e.printStackTrace();
+			
+			
 		}
 		
 		

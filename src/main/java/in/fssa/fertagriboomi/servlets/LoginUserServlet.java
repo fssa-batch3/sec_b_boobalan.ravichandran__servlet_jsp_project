@@ -26,8 +26,8 @@ public class LoginUserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	    System.out.println("enter login details");
-		
+		System.out.println("enter login details");
+
 		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 		rd.forward(request, response);
 	}
@@ -46,12 +46,15 @@ public class LoginUserServlet extends HttpServlet {
 
 				request.getSession().setAttribute("LOGGEDUSER", email);
 				System.out.print(request.getSession().getAttribute("LOGGEDUSER"));
-				
-				response.sendRedirect(request.getContextPath() + "/home_page");
+
+				response.sendRedirect(request.getContextPath() + "/index");
 			}
 		} catch (ServiceException e) {
-			e.printStackTrace();
-			throw new ServletException(e);
+//			e.printStackTrace();
+//			throw new ServletException(e);
+			String getError = e.getMessage();
+			String errorArray[] = getError.split(":");
+			response.sendRedirect("login?error=" + errorArray[1]);
 		}
 
 	}

@@ -5,57 +5,38 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Profile details</title>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+	rel="stylesheet">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Profile Details</title>
 <link rel="icon" type="image/x-icon" href="https://iili.io/J9HTxWb.png">
+<link rel="stylesheet" href="./css/header.css">
+<link rel="stylesheet" href="./css/user_profile.css">
 
-<style>
-.profile-container {
-	width: 60vw;
-	height: 60vh;
-	border-radius: 15px;
-	text-align: center;
-	align-items: center;
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px
-		6px;
-	align-items: center;
-}
-
-.all_details_container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 4vh;
-}
-
-.name-container, .phone-container, .email-container, .password-container
-	{
-	display: flex;
-	justify-content: space-between;
-	margin: 6.5vh 8vw;
-}
-
-.title h2 {
-	color: #65218a;
-	margin-top: 3vh;
-}
-
-.update-btn a button {
-	padding: 1.8vh 5.5vw;
-	background-color: #176047;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	font-size: 17px;
-}
-
-.update-btn a button:hover {
-	background-color: #099f6b;
-	box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
-</style>
 </head>
 <body>
-	<%@ include file="/header.jsp"%>
+
+	<%
+	String loggedUserUniqueEmail = (String) request.getSession().getAttribute("LOGGEDUSER");
+	%>
+	<%
+	if (loggedUserUniqueEmail == null) {
+	%>
+	<jsp:include page="/header.jsp"></jsp:include>
+	<%
+	} else {
+	%>
+	<jsp:include page="/after_login_header.jsp"></jsp:include>
+	<%
+	}
+	%>
 	<%
 	User userDetails = (User) request.getAttribute("USERDETAILS");
 	%>
@@ -81,8 +62,13 @@
 				<h3>Account Password:</h3>
 				<p><%=userDetails.getPassword()%></p>
 			</div>
-			<div class="update-btn">
-				<a href="profile/edit"><button>Update Profile</button></a>
+			<div class="button_container">
+				<div class="update-btn">
+					<a href="profile/edit"><button>Update Profile</button></a>
+				</div>
+				<div>
+					<a class="logout" href="logout">Logout</a>
+				</div>
 			</div>
 		</div>
 	</div>

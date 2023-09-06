@@ -12,6 +12,7 @@
 <meta charset="ISO-8859-1">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Product List</title>
+ <link rel="icon" type="image/x-icon" href="https://iili.io/J9HTxWb.png">
 <style>
 
 body {
@@ -81,6 +82,9 @@ width:90vw;
 margin-left:5vw;
 margin-top:4vh;
 }
+.baner{
+margin-bottom:10vh;
+}
 
 </style>
 </head>
@@ -109,6 +113,7 @@ margin-top:4vh;
 			<th>Description</th>
 			<th>Image</th>
 			<th>Pages</th>
+			<th>Price</th>
 			<th>Staus</th>
 		</tr>
 
@@ -124,17 +129,18 @@ margin-top:4vh;
 			<td><%=product.getDescription()%></td>
 			<td><img src="<%=product.getImageURL()%>" alt="<%=product.getName()%> Image" width="130" height="130"></td>
 			<td>
-			<a
-				href="product/details?product_id=<%=product.getId()%>">Details</a>
+			<a href="product/details?product_id=<%=product.getId()%>">Details</a>
 				<a href="product/edit?product_id=<%=product.getId()%>">Update</a>
 				<a href="product/delete?product_id=<%=product.getId()%>" >Delete</a>
 			</td>
+			<td> <%=product.getPrice() %></td>
 			<td> <%=product.isActive() %></td>
 		</tr>
 		<%
 		}
 		%>
 	</table>
+	
 	
 	<button class="create_btn"><a href="product/new">Create</a></button>
 </body>
