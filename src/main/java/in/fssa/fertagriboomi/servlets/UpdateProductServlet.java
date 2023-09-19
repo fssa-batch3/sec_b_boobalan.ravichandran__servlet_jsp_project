@@ -50,7 +50,7 @@ public class UpdateProductServlet extends HttpServlet {
 		try {
 			productService.updateProduct(productId, product);
 			out.println("Product updated successfully");
-			response.sendRedirect(request.getContextPath() + "/index");
+			response.sendRedirect(request.getContextPath() + "/get_all_products_admin");
 
 		} catch (ServiceException | ValidationException e) {
 //			e.printStackTrace();

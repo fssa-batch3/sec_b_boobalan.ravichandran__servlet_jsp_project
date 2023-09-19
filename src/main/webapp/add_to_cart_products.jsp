@@ -46,6 +46,7 @@ body {
 .cart {
     display: flex;
     text-align: center;
+    padding-bottom:15vh;
 }
 .cart21 img{
     width: 250px;
@@ -592,7 +593,7 @@ function processAllProductsDetails(loadProducts) {
 
         // Create an anchor element for the product image
         const productImageAnchor = document.createElement('a');
-        productImageAnchor.href = "";
+        productImageAnchor.href = '<%= request.getContextPath()%>'+'/product/details?product_id='+loadProduct.id;
 
         // Create an image element
         const productImage = document.createElement('img');

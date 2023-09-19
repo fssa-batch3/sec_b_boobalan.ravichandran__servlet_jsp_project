@@ -192,7 +192,7 @@ color:green;
 					</div>
 
 				</div>
-				<div id="wishlist-message" class="hidden">Product added to wishlist!</div>
+				<div id="wishlist-message" class="hidden">Product added to Cart!</div>
 				
 				<div class="payment"><li>Payment Method: Cash on Delivery Only.</l></div>
 				<div class="addvertisement">
