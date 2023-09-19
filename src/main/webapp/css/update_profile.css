@@ -1,0 +1,97 @@
+@charset "ISO-8859-1";
+body {
+	font-family: Arial, sans-serif;
+}
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding-top: 10vh;
+	background-color: #f2f2f2;
+}
+
+h1 {
+	text-align: center;
+	margin-top: 30px;
+}
+
+form {
+	max-width: 400px;
+	margin: 0 auto;
+	padding: 80px 70px 80px 60px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form div {
+	margin-bottom: 15px;
+}
+
+label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+
+input[type="text"], input[type="email"], input[type="tel"] {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+input[type="password"], input[type="text"] {
+	width: 100%; /* Reduce width to make space for the show/hide button */
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 20px;
+}
+
+input[type="email"] {
+	background-color: rgba(173, 173, 173, 0.571);
+}
+
+input[type="email"]:focus {
+	outline: none;
+}
+
+.password-toggle {
+	width: 10%;
+	padding: 5px 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	cursor: pointer;
+	margin-top: 20px;
+}
+
+button[type="submit"] {
+	padding: 1.8vh 4vw;
+	background-color: #176047;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 17px;
+}
+
+button[type="submit"]:hover, .cancel-btn:hover {
+	background-color: #50b892;
+	box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px
+		6px 6px;
+}
+
+.cancel-btn {
+	text-decoration: none;
+	margin-left: 5vw;
+	padding: 1.7vh 3vw;
+	background-color: #176047;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 17px;
+}
+
+.button_store {
+	display: flex;
+}

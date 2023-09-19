@@ -1,0 +1,130 @@
+@charset "ISO-8859-1";
+.about111{
+    display: flex;
+    justify-content: space-around;
+}
+
+.social img{
+    width: 45px;
+    height: px;
+    margin-left: -1px;
+}
+.footer1{
+    background-color:#E8CCC7;
+}
+.img101 img{
+    width:300px;
+    height: 110px;
+    cursor: pointer;
+}
+.img101{
+    background:linear-gradient(#e0c5c0, #ffeeeb,#dec3bf);
+    padding:1.5vh 40vw;
+}
+
+.social{
+    margin-left: 570px;
+   }
+   .social a img{
+       width:50px;
+       height:50px;
+       border-radius: 50%;
+       margin-right: 40px;
+       background-color: white;
+   }
+   .cont p{
+	font-size: 23px;
+	font-weight: bold;
+	color: rgb(8, 8, 67);
+    margin-top: .8rem;
+}
+.quick a{
+   color:rgb(77, 76, 76);
+   text-decoration: none;
+   font-weight: bold;
+   font-size: 16px;
+}
+.quick a:hover{
+	color:rgb(255, 0, 85);
+}
+.quick p{
+	margin-top: .7rem;
+}
+.quick h2{
+    font-size: 22px;
+    color:rgb(14, 14, 112)
+}
+.quick{
+    width:15rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+.bottom{
+    background:linear-gradient(#e0c5c0, #ffeeeb,#dec3bf);
+    padding: 25px 0px 15px 100px;
+    border-top: 6px solid rgb(167, 48, 80);
+    margin: 0rem 1rem 0rem 1rem;
+    display: flex;
+}
+.rboomi{
+	margin-top: .5rem;
+}
+.rboomi p{
+   color:rgb(74, 74, 74);
+   font-weight: bold;
+   font-size: 17px;
+}
+
+
+
+ /* ----------------------/mobile footer/----------------========== */
+ .mobile_footer{
+  display: inline-block;
+  font-size: 12px;
+  width:100vw;
+  background-color: #0a043f;
+  color:white;
+ }
+ .mobile_aboutus ,.mobile_social{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+ }
+ .mobile_aboutus a{
+  color:white;
+  text-decoration: none;
+ }
+ .mobile_aboutus a:hover{
+  color:#ffdd00
+ }
+ /* =------------------/social media img/-------------======= */
+ .mobile_social img{
+  width:40px;
+  height:40px;
+  border-radius: 50%;
+  margin-left:5vw;
+  background-color: white;
+ }
+ .copyright{
+  display: flex;
+  padding: 5px 0vw;
+  justify-content: center;
+  text-align: center;
+ }
+ .copyright span{
+  color:#ffdd00;
+  font-weight: bold;
+  margin-left: 1vw;
+ }
+}
+/* .spin_roller{
+  background-color: black;
+  padding: 5px 10px 3px 10px;
+  width:200px;
+  align-items: center;
+} */
+
+.mobile_footer{
+	display:none;
+}
