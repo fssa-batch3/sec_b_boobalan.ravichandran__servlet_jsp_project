@@ -107,7 +107,6 @@ margin-left:4vw;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Lora', serif;
 }
 
 body {
@@ -490,6 +489,7 @@ body {
 	border: none;
 	border-radius: 5px;
 	color: white;
+	font-size:16px;
 }
 
 .login-container a button:hover {
@@ -610,16 +610,17 @@ body {
 				</div>
 			</div>
 		</div>
-		<%
-	}
-	%>
+	
 </header>
 
 <script>
 
+const loggedValue = '<%=loggedUserUniqueEmail%>';
+
+
 	  const cart = document.getElementById("span_count");
 	  const wish = document.getElementById("wish_span_count");
-	  const loggedValue = '<%=loggedUserUniqueEmail%>';
+	
 	  const wishlist = JSON.parse(localStorage.getItem("wishlisstItem")) || [];
 	  const wishlistCount = wishlist.filter(
 	    (data) => data.userUniqueId === loggedValue
@@ -627,12 +628,13 @@ body {
 	  //console.log(wishlistCount);
 	  const wishlistValueCount = wishlistCount.length;
 	 // console.log(wishlistValueCount); 
+	
 	  if (wishlistValueCount === 0) {
 	    wish.style.display = "none";
 	  } else {
 	    wish.innerText = wishlistValueCount;
 	  }
-
+	 
 	
 const addToCartValue = JSON.parse(localStorage.getItem("addToCartItem")) || [];
 const cartCount = addToCartValue.filter(
@@ -645,5 +647,8 @@ if (carttValueCount === 0) {
 	  cart.innerText = carttValueCount;
   }
 
+	</script>
+	<%
+	}
+	%>
 
-</script>

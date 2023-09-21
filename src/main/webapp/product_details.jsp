@@ -11,15 +11,15 @@
 <meta charset="UTF-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Neuton:ital,wght@0,200;0,300;0,400;1,400&display=swap" rel="stylesheet">
+
 <link rel="icon" type="image/x-icon" href="https://iili.io/J9HTxWb.png">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/product_details.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/header.css">
 	
+	<link rel="stylesheet" href="<%= request.getContextPath()%>/css/style.css">
 
 <link rel="stylesheet" href="<%= request.getContextPath()%>/css/footer.css">
 <link rel="stylesheet"
@@ -85,7 +85,7 @@ align-items: center;
 margin-top:5vh;
 margin-left:7vw;
 font-weight:bold;
-font-size:20px;
+font-size:23px;
 color:green;
 }
 .benifitsDetails, .descriptionDetails, .applicationDetails {
@@ -101,7 +101,15 @@ color:green;
 .reviews{
 	margin-left:7vw;
 }
+.out_of_stock{
+margin-left:8vw;
+margin-top:4vh;
 
+}
+.out_of_stock img{
+width:22vw;
+height:30vh;
+}
 </style>
 </head>
 <body>
@@ -116,10 +124,13 @@ color:green;
 
 
 	<%
-	Product product = (Product) request.getAttribute("productDetails");
+	int qty = (int) request.getAttribute("TOTAL_QTY");
+	int stock = (int) request.getAttribute("TOTAL_STOCK");
+	int remainStock = stock - qty;
+			Product product = (Product) request.getAttribute("productDetails");
 	List<RatingsAndReviews> reviews = (	List<RatingsAndReviews>) request.getAttribute("REVIEWS");
 	%>
-
+     
 	<div class="total">
 		<div class="userAlert" style="display: none;" id="like">
                     <div class="like">
@@ -165,11 +176,25 @@ color:green;
 						Weight: <span id="product_weight">200ml</span>
 					</h3>
 				</div>
-
+                
+                
+                <%if(remainStock <= 0) {%>
+                <div class="out_of_stock">
+                <img src="https://iili.io/JJFYfg2.jpg" alt="out of stock">
+                </div>
+                <%}else{ %>
 				<div class="rem">
-					<a id="go_to_cart">
+				<%
+					String addToCart;
+					if (loggedUserUniqueEmail != null) {
+						addToCart = "go_to_cart";
+					} else {
+						addToCart = request.getContextPath() + "/login";
+					}
+					%>
+					<a id="<%=addToCart%>">
 						<button id="rem1">
-							GO TO CART <i id="cart" class="fa fa-shopping-cart"
+							ADD TO CART <i id="cart" class="fa fa-shopping-cart"
 								style="font-size: 25px"></i>
 						</button>
 					</a>
@@ -192,12 +217,15 @@ color:green;
 					</div>
 
 				</div>
+			
 				<div id="wishlist-message" class="hidden">Product added to Cart!</div>
 				
 				<div class="payment"><li>Payment Method: Cash on Delivery Only.</l></div>
+					<%} %>
 				<div class="addvertisement">
 					<img src="https://iili.io/J9hKbou.jpg" alt="advertisement">
 				</div>
+				
 			</div>
 
 		</div>
@@ -256,6 +284,8 @@ color:green;
     }
 %>
 	</div>
+	<script src="<%= request.getContextPath()%>/javascript/search.js"> </script>
+	
 	<script>
 	const crop_description = document.createElement("div");
 crop_description.setAttribute("class", "crop_description");
@@ -403,7 +433,8 @@ applicationPoints.forEach((point) => {
 	const applicationCropUl = document.querySelector(".method");
 	applicationCropUl.style.display = "none";
 	benifitsCropUl.style.display = "none";
-	descriptionCropUl.style.display = "none";
+	descriptionCrop.classList.add("descrip");
+	//descriptionCropUl.style.display = "none";
 
 	descriptionCrop.addEventListener("click", function(){
 	  descriptionCropUl.style.display = "inline";
@@ -443,7 +474,7 @@ const loginUserDetails = '<%=loggedUserUniqueEmail%>';
 
 button.addEventListener("click", function wishListAction(event) {
     event.preventDefault();
-
+    <% if (loggedUserUniqueEmail != null) { %>
     // Check if the user is logged in
     const logedUserDetails = '<%=loggedUserUniqueEmail%>';
 
@@ -485,10 +516,14 @@ button.addEventListener("click", function wishListAction(event) {
         localStorage.setItem("wishlisstItem", JSON.stringify(wishlistRemove));
         this.style.color = "rgb(198, 198, 198)";
     }
+    <% } else { %>
+    window.location.href = '<%= request.getContextPath() %>/login';
+  <% } %>
 });
 
 // Function to show the alert message for adding/removing from the wishlist
 function showAlertMessage() {
+	  <% if (loggedUserUniqueEmail != null) { %>
     const like = document.getElementById("like");
     const dislike = document.getElementById("dislike");
 
@@ -507,6 +542,9 @@ function showAlertMessage() {
             location.reload(); // Reload the page after 2 seconds
         }, 1200); // 1200 milliseconds (1.2 seconds) delay
     }
+    <% } else { %>
+    window.location.href = '<%= request.getContextPath() %>/login';
+  <% } %>
 }
 
 button.addEventListener("click", showAlertMessage);
@@ -539,50 +577,57 @@ function checkWishlistStatus() {
     }
 }
 
-// Call the function to check and update button style on page load
+<% if (loggedUserUniqueEmail != null) { %>
+
 window.addEventListener("load", function() {
-    checkWishlistStatus();
+	    checkWishlistStatus();
 });
+<%}else {%>
+        // Product is not in the wishlist
+        button.classList.remove("fa-solid");
+        button.classList.remove("true");
+        button.classList.remove("active");
+        button.style.color = "rgb(198, 198, 198)";
+<% }%>
 
-
-//Add to cart details
 function addToCart() {
-  if (loginUserDetails) {
-    const logedUserDetails = '<%=loggedUserUniqueEmail%>';
-    const addToCartItem =
-      JSON.parse(localStorage.getItem("addToCartItem")) || [];
-    const addProductId = '<%=product.getId()%>';
+	  <% if (loggedUserUniqueEmail != null) { %>
+	    const logedUserDetails = '<%= loggedUserUniqueEmail %>';
+	    const addToCartItem = JSON.parse(localStorage.getItem("addToCartItem")) || [];
+	    const addProductId = '<%= product.getId() %>';
 
-    const productExists = addToCartItem.some(
-      (data) =>
-        data.cart_id === addProductId && data.userUniqueId === logedUserDetails
-    );
-    if (!productExists) {
-      addToCartItem.push({
-        cart_id: addProductId,
-        userUniqueId: loginUserDetails,
-        product_qty: "1",
-      });
-      localStorage.setItem("addToCartItem", JSON.stringify(addToCartItem));
+	    const productExists = addToCartItem.some(
+	      (data) =>
+	        data.cart_id === addProductId && data.userUniqueId === logedUserDetails
+	    );
+	    if (!productExists) {
+	      addToCartItem.push({
+	        cart_id: addProductId,
+	        userUniqueId: logedUserDetails,
+	        product_qty: "1",
+	      });
+	      localStorage.setItem("addToCartItem", JSON.stringify(addToCartItem));
 
-      // Show the wishlist message
-      const wishlistMessage = document.getElementById("wishlist-message");
-      wishlistMessage.classList.remove("hidden");
+	      // Show the wishlist message
+	      const wishlistMessage = document.getElementById("wishlist-message");
+	      wishlistMessage.classList.remove("hidden");
 
-      // Set a timer to hide the message after 3 seconds and refresh the page
-      setTimeout(function () {
-        wishlistMessage.classList.add("hidden");
-        location.reload(); // Refresh the page
-      }, 2400);
-    } else {
-      alert("Product already in cart");
-    }
-  } else {
-    window.location.href = `${add_path}/pages/user/user_login.html`;
-  }
-}
+	      // Set a timer to hide the message after 3 seconds and refresh the page
+	      setTimeout(function () {
+	        wishlistMessage.classList.add("hidden");
+	        location.reload(); // Refresh the page
+	      }, 2400);
+	    } else {
+	      alert("Product already in cart");
+	    }
+	  <% } else { %>
+	    window.location.href = '<%= request.getContextPath() %>/login';
+	  <% } %>
+	}
 
-document.getElementById("rem1").addEventListener("click", addToCart);
+	document.getElementById("rem1").addEventListener("click", addToCart);
+
+
 
 </script>
 

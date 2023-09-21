@@ -281,6 +281,41 @@ input[type="radio"] {
     display: inline;
    
 }
+.no_address_found img{
+width:25vw;
+height:48vh;
+background-color:white;
+
+}
+.no_address_found{
+padding:3vh 3vw;
+border-radius:15px;
+width:30vw;
+margin: 1.5vh auto;
+
+text-align:center;
+box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+.no_address_found p{
+font-weight:400;
+line-height:3.5vh;
+font-size:20px;
+margin:2vh 0;
+color:rgb(152, 152, 152);
+
+}
+.add-new-address-div-address h3{
+ color: white;
+    background-color: rgb(9, 124, 255);
+    padding:1.5vh 2vw;
+     border-radius: 25px;
+}
+.add-new-address-div-address{
+width:24vw;
+cursor:pointer;
+   
+}
 </style>
 </head>
 <body>
@@ -296,15 +331,23 @@ input[type="radio"] {
 		<div class="address-title-head">
 			<h3>DELIVERY ADDRESS</h3>
 		</div>
-
-
+	<%	List<DeliveryAddresses> addressList = (List<DeliveryAddresses>) request.getAttribute("LOGGED_USER_ADDRESSES");
+		
+			%>
+		
+     <%if(addressList.isEmpty()) {%>
+            <div class="no_address_found">
+      <img src="https://iili.io/JJ2K0Cb.png" alt="no address found">
+      <p>Please create a new address to proceed with your purchase.</p>
+      <div  class="add-new-address-div-address">
+      <h3>ADD NEW ADDRESS</h3>
+      </div>
+      </div>
+      <%} %>
 
 		<div class="all-address-container">
-			<%
-			List<DeliveryAddresses> addressList = (List<DeliveryAddresses>) request.getAttribute("LOGGED_USER_ADDRESSES");
-			if (addressList != null && !addressList.isEmpty()) {
-				for (DeliveryAddresses address : addressList) {
-			%>
+		<%if (addressList != null && !addressList.isEmpty()) {
+			for (DeliveryAddresses address : addressList) { %>
 			<form class="form_container"
 				action="order_created?address_id=<%=address.getId()%>" method="post">
 				<div class="address-container">
@@ -349,11 +392,12 @@ input[type="radio"] {
 		<%
 		}
 		%>
-
+<%if (addressList != null && !addressList.isEmpty()) {%>
 		<div class="add-new-address-div">
 			<p>+</p>
 			ADD A NEW ADDRESS
 		</div>
+			<%}%>
 		<div>
 
 			<div class="add-new-address-class-container">
@@ -462,10 +506,16 @@ input[type="radio"] {
      // get the class. which div class have to display none
      const newAddress = document.querySelector(".add-new-address-class-container")
      // add new class
+       <%if(addressList != null && !addressList.isEmpty()) {%>
      document.querySelector(".add-new-address-div").addEventListener("click",() =>{
          newAddress.classList.add("show-new-address");
      });
-
+     <%}%>
+  <%if(addressList.isEmpty()){%>
+     document.querySelector(".add-new-address-div-address").addEventListener("click",() =>{
+         newAddress.classList.add("show-new-address");
+     });
+<%}%>
      document.getElementById("exit-this-page").addEventListener("click",()=>{
          newAddress.classList.remove("show-new-address");
      })

@@ -33,7 +33,6 @@ public class UpdateUserServlet extends HttpServlet {
 			User userDetails = new UserService().findByEmail(loggedUserUniqueEmail);
 			int userId = userDetails.getId();
 			String name = request.getParameter("name");
-			String password = request.getParameter("password");
 			long phoneNumber = Long.parseLong(request.getParameter("phone"));
 
 			UserService userService = new UserService();
@@ -41,7 +40,7 @@ public class UpdateUserServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			newUser.setName(name);
 			newUser.setPhoneNumber(phoneNumber);
-			newUser.setPassword(password);
+		
 			userService.updateUser(userId, newUser);
 
 			out.println("User updated successfully");

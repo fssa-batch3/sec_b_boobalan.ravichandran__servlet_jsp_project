@@ -33,7 +33,7 @@ public class ProductListServlet extends HttpServlet {
 			try {
 				
 				List<Product> productList = new ProductService().listAllProductsByCategoryId(categoryId);
-				System.out.println(productList);
+				//System.out.println(productList);
 				request.setAttribute("CATEGORYPRODUCTS", productList);
 			
 				
@@ -42,7 +42,9 @@ public class ProductListServlet extends HttpServlet {
 				
 			} catch (ServiceException | ValidationException e) {
 				e.printStackTrace();
-				throw new ServletException(e);
+				request.setAttribute("ERROR_MESSAGE", e.getMessage());
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/product_list.jsp");
+				dispatcher.forward(request, response);
 			}
 			
 			

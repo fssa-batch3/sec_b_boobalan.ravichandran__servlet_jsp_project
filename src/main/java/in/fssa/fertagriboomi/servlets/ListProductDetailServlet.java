@@ -17,6 +17,7 @@ import in.fssa.fertagriboomi.model.Product;
 import in.fssa.fertagriboomi.model.RatingsAndReviews;
 import in.fssa.fertagriboomi.service.ProductService;
 import in.fssa.fertagriboomi.service.ReviewsAndRatingsService;
+import in.fssa.fertagriboomi.service.StockService;
 
 /**
  * Servlet implementation class ListProductDetailServlet
@@ -39,11 +40,18 @@ public class ListProductDetailServlet extends HttpServlet {
 
 		ProductService productService = new ProductService();
 		Product product = new Product();
-
+		StockService stockService = new StockService();
 		try {
+			
+          int totalQty = stockService.findQuantities(productId);
+          int totalStock = stockService.findStockCountByProductId(productId);
+          
 			product = productService.findProductById(productId);
 			List<RatingsAndReviews> reviews = new ReviewsAndRatingsService().findAllRatingsByProductId(productId);
 			request.setAttribute("productDetails", product);
+			request.setAttribute("TOTAL_QTY",totalQty );
+			request.setAttribute("TOTAL_STOCK",totalStock );
+			
 			request.setAttribute("REVIEWS", reviews);
 			RequestDispatcher rd = request.getRequestDispatcher("/product_details.jsp");
 			rd.forward(request, response);

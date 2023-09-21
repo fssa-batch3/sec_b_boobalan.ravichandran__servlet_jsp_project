@@ -5,7 +5,11 @@
     -----
     ----------
     /* */
-    
+ *{
+    font-family: 'Neuton', serif;
+    letter-spacing: .3px;
+    word-spacing: 3px;
+}
     .product{
       display: flex;
      width:98.5vw;
@@ -50,23 +54,23 @@ left: 0;
     color: green;
 }
 .off{
-  margin-left: 70px;
+  margin-left: 55px;
   margin-top: 10px;
 }
 .off1{
-   margin-left:50px;
+   margin-left:64px;
    margin-top: 10px;
 }
 .off2{
-    margin-left:50px;
+    margin-left:67px;
     margin-top: 10px;
 }
 .off3{
-    margin-left: 10px;
+    margin-left: 40px;
     margin-top: 10px;
 }
 .off4{
-    margin-left: 50px;
+    margin-left: 60px;
     margin-top: 10px;
 }
 /* .h11 h1{
@@ -212,6 +216,7 @@ padding: 15px 0px 0px 0px;
   display: flex;
   text-align: center; 
   justify-content: center;
+  color: rgb(115, 1, 45);
 }
 
 
@@ -1576,9 +1581,7 @@ font-size: 15px;
 	transition: background-color 0.6s ease;
 }
 
-.active, .dot:hover {
-	background-color: #717171;
-}
+
 
 .offers1 {
 	display: grid;
@@ -1690,7 +1693,8 @@ border-bottom:  1px solid rgb(234, 234, 234);
 
 .autocom-box li a{
   text-decoration: none;
-  color:black
+  color:black;
+    font-weight: 400;
 }
 .search-input.actives .autocom-box li{
   display: block;
@@ -1786,9 +1790,7 @@ border-bottom:  1px solid rgb(234, 234, 234);
 	transition: background-color 0.6s ease;
 }
 
-.active, .dot:hover {
-	background-color: #717171;
-}
+
 
 .offers1 {
 	display: grid;
@@ -1818,9 +1820,52 @@ to {
 
 }
 
+   
+    .search-input .autocom-box {
+    padding: 0px;
+    max-height: 380px;
+    width:30vw;
+    margin-left: 6.5vw;;
+    overflow-y: auto;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 0px 0px 5px 5px;
+    opacity: 0;
+    pointer-events: none;
+    /* margin-top: -100px; */
+    z-index: 1;
+    position: absolute;
+}
+.search-input .search_bar{
+width:35vw;
+height:45px;
+}
+.search-input .search_bar .sear_btn{
+width:80px;
+}
 
+ *{
+    font-family: 'Neuton', serif;
+    letter-spacing: .3px;
+    word-spacing: 3px;
+}
+.search-input .search_bar .input0 {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    outline: none;
+    padding: 10px 80px 10px 20px;
+    font-size: 20px;
+    border: 1.5px solid rgb(24, 8, 115);
+    box-sizing: border-box;
+    border-radius: 50px;
+}
 
-
+.dropbtn, .dropbtn1, .dropbtn2{
+	font-size:18px;
+}
 ------------------------------------------------------------/
 
 

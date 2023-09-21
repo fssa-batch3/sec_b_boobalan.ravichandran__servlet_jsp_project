@@ -32,11 +32,11 @@ public class CreateProductServlet extends HttpServlet {
 		String application = request.getParameter("application");
 		String manufacture = request.getParameter("manufacture");
 		int category = Integer.parseInt(request.getParameter("product_category"));
-		;
+	
 		String image_url = request.getParameter("image_url");
 		int price = Integer.parseInt(request.getParameter("price"));
 		int discount = Integer.parseInt(request.getParameter("discount"));
-
+        int stockCount = Integer.parseInt(request.getParameter("stock_count"));
 		product.setName(name);
 		product.setProductWeight(weight);
 		product.setBenefits(benefits);
@@ -45,19 +45,20 @@ public class CreateProductServlet extends HttpServlet {
 		product.setManufacture(manufacture);
 		product.setImageURL(image_url);
 		product.setCategoryId(category);
-
+		product.setStockCount(stockCount);
 		Price priceList = new Price();
 		priceList.setPrice(price);
 		int priceValue = priceList.getPrice();
 		priceList.setDiscount(discount);
 		int discountValue = priceList.getDiscount();
 		
+		
 		product.setPrice(priceValue);
 		product.setDiscount(discountValue);
 
 		ProductService productService = new ProductService();
 		PrintWriter out = response.getWriter();
-
+      
 		try {
 
 			productService.createProduct(product);

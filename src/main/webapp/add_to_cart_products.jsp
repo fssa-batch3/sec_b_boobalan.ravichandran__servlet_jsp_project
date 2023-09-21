@@ -4,15 +4,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Neuton:ital,wght@0,200;0,300;1,400&display=swap" rel="stylesheet">
+
 	
 	<link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="<%= request.getContextPath()%>/css/footer.css">
+<link rel="stylesheet" href="<%= request.getContextPath()%>/css/style.css">
+
 <title>Add to cart</title>
 <style>
 body {
@@ -135,6 +137,7 @@ a{
     border: 2px solid  rgb(239, 239, 239);
     font-weight: bold;
     border-radius: 5px;
+    cursor:pointer;
 
 }
 .btnn button:hover{
@@ -235,7 +238,9 @@ margin-top: 16px;
     width: 50vw;
     text-align: center;
     margin-left: 13vw;
+       margin-top: 4vw;
 }
+
 #discount{
     color:green ;
     font-size: 21px;
@@ -428,6 +433,8 @@ margin-top: 16px;
         </main>
         	<jsp:include page="/footer.jsp"></jsp:include>
 </body>
+<script src="<%= request.getContextPath()%>/javascript/search.js"> </script>
+
 <script type="text/javascript">
 
 
@@ -539,8 +546,8 @@ async function getAllProducts() {
         allProducts = responseData.data;
 
         // Now, 'allProducts' contains the array of product data
-        console.log(allProducts);
-        console.log("wishListProduct", cartIds);
+        //console.log(allProducts);
+        //console.log("wishListProduct", cartIds);
         logedUserDetails = '<%=loggedUserUniqueEmail%>';
         
         

@@ -5,21 +5,25 @@
 <head>
 <meta charset="ISO-8859-1">
 
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Neuton:ital,wght@0,200;0,300;1,400&display=swap" rel="stylesheet">
+
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" type="image/x-icon" href="https://iili.io/J9HTxWb.png">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/header.css">
 <link rel="stylesheet" href="<%= request.getContextPath()%>/css/footer.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style.css">
 <title>Ordered Successfully</title>
 <style type="text/css">
 * {
-	font-family: 'Lora', serif;
+  font-family: 'Neuton', serif;
+    letter-spacing: .3px;
+    word-spacing: 3px;
 }
 
 main {
@@ -97,6 +101,8 @@ margin-top:-5vh;
 	
 	</main>
 		<jsp:include page="/footer.jsp"></jsp:include>
+			<script src="<%=request.getContextPath()%>/javascript/search.js"> </script>
+		
 	<script>
 	 // removing the data associated with the "addToCartItem" key
 

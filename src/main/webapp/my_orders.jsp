@@ -11,13 +11,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Neuton:ital,wght@0,200;0,300;1,400&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="./css/header.css">
 <link rel="stylesheet" href="<%= request.getContextPath()%>/css/footer.css">
+<link rel="stylesheet" href="<%= request.getContextPath()%>/css/style.css">
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" type="image/x-icon" href="https://iili.io/J9HTxWb.png">
@@ -191,6 +193,17 @@ cursor:pointer;
 color:green;
 font-size:20px;
 }
+.no-orders-found img{
+width:35vw;
+height:70h;
+border-radius:10px;
+box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.no-orders-found {
+margin:3vh 0 1.5vh 22vw;
+
+
+}
 </style>
 </head>
 <body>
@@ -334,11 +347,18 @@ font-size:20px;
 		</div>
 		<%
 		}
-		}
+		}else{
 		%>
+		<div class="no-orders-found">
+		<img src="https://iili.io/JJf9TXa.jpg" alt="no orders found">
+		</div>
+		<%} %>
 
 	</div>
 
 	<jsp:include page="/footer.jsp"></jsp:include>
+	
+	<script src="<%= request.getContextPath()%>/javascript/search.js"> </script>
+	
 </body>
 </html>

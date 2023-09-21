@@ -15,12 +15,21 @@
 	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="./css/header.css">
+<link rel="stylesheet" href="<%= request.getContextPath()%>/css/style.css">
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" type="image/x-icon" href="https://iili.io/J9HTxWb.png">
 <link rel="stylesheet" href="<%= request.getContextPath()%>/css/footer.css">
 <title>order details</title>
 <style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Lora', serif;
+}
+
 .order_container {
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -34,19 +43,19 @@
 .single-order {
 	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
 		rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-	width: 20vw;
-	min-height: 25vh;
+	width: 15vw;
+	min-height: 30vh;
 	padding: 1.5vh 2vw 3vh 2vw;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	margin: 2vh 2vw;
+	margin: 2vh 1vw;
 	border-radius: 10px;
 }
 
 .single-order img {
-	width: 15vw;
-	height: 23vh;
+	width: 10vw;
+	height: 18vh;
 }
 
 .single-order h3 {
@@ -56,7 +65,7 @@
 
 .price-details {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	margin: 2vh 0;
 	padding: .2vh 3vw;
 }
@@ -69,6 +78,7 @@
 .price-details del {
 	color: rgb(138, 1, 63);
 	margin-top:.3vh;
+	margin-left:1vw;
 }
 
 .head-details {
@@ -148,15 +158,15 @@
 }
 
 .address-details .name {
-	margin-left: 5.5vw;
+	margin-left: 5.4vw;
 }
 
 .address-details .state {
-	margin-left: 12.8vw;
+	margin-left: 13.1vw;
 }
 
 .address-details .mobile {
-	margin-left: 5.7vw;
+	margin-left: 5.8vw;
 }
 
 .address-details .status {
@@ -203,6 +213,10 @@ box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   background-color:rgb(31, 167, 108);
   transition: all 0.4s;
 }
+.order_container a{
+text-decoration: none;
+}
+
 </style>
 </head>
 <body>
@@ -238,10 +252,11 @@ Orders order = (Orders) request.getAttribute("ORDERS");
             
             java.util.Date currentDateValue = new java.util.Date();
         %>
+    <a href="<%= request.getContextPath()%>/product/details?product_id=<%=orders.getProductId() %>">
         <div class="single-order">
             <img src="<%=orders.getProductImage()%>"
                 alt="<%=orders.getProductName()%>">
-            <h3><%=orders.getProductName()%></h3>
+           
             <div class="price-details">
                 <h4>
                     &#8377;<%=orders.getPrice() - orders.getDiscount()%></h4>
@@ -257,6 +272,7 @@ Orders order = (Orders) request.getAttribute("ORDERS");
             <a href="<%= request.getContextPath()%>/my_order/order_details/review_ratings?product_id=<%=orders.getProductId() %>&order_item_id=<%=orders.getId() %>&name=<%=address.getPersonName() %>&order_id=<%=order.getId() %>"><img src="<%= request.getContextPath()%>/assets/images/star.webp" alt="facebook">Rate & Review Product</a>
             <%}} %>
         </div>
+    </a>
         <%
         }
         %>
@@ -371,5 +387,7 @@ Orders order = (Orders) request.getAttribute("ORDERS");
     %></div>
 </div>
 <jsp:include page="/footer.jsp"></jsp:include>
+<script src="<%= request.getContextPath()%>/javascript/search.js"> </script>
+
 </body>
 </html>

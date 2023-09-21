@@ -7,11 +7,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Neuton:ital,wght@0,200;0,300;1,400&display=swap" rel="stylesheet">
+
 <link rel="icon" type="image/x-icon" href="https://iili.io/J9HTxWb.png">
 <title>Order summary</title>
 <style>
@@ -19,7 +19,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Lora', serif;
+     font-family: 'Neuton', serif;
+    letter-spacing: .3px;
+    word-spacing: 3px;
 
     }
   main{

@@ -15,12 +15,12 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Neuton:ital,wght@0,200;0,300;1,400&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="./css/style.css">
-<link rel="stylesheet" href="<%= request.getContextPath()%>/css/footer.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/footer.css">
 <link rel="stylesheet" href="./css/header.css">
 
 <link rel="stylesheet"
@@ -28,26 +28,60 @@
 <title>home page</title>
 <link rel="icon" type="image/x-icon" href="https://iili.io/J9HTxWb.png">
 <style type="text/css">
-.slideshow-container {
-    max-width:85vw; 
 
-    position: relative;
-    margin: auto;
-    margin-top: 5vh;
+
+*{
+font-family: 'Neuton', serif;
+    letter-spacing: .6px;
+    word-spacing: 7px;
 }
-.slideshow-container img{
-    border-radius:18px;
+.slideshow-container {
+	max-width: 85vw;
+	position: relative;
+	margin: auto;
+	margin-top: 5vh;
 }
-.mobile_footer{
-	display:none;
+
+.slideshow-container img {
+	border-radius: 18px;
+}
+
+.mobile_footer {
+	display: none;
+}
+
+.search-input .autocom-box {
+	padding: 0px;
+	max-height: 380px;
+	width: 30vw;
+	margin-left: 6.5vw;;
+	overflow-y: auto;
+	background-color: white;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3)
+		0px 3px 7px -3px;
+	border-radius: 0px 0px 5px 5px;
+	opacity: 0;
+	pointer-events: none;
+	/* margin-top: -100px; */
+	z-index: 1;
+	position: absolute;
+}
+
+.search-input .search_bar {
+	width: 35vw;
+	height: 45px;
+}
+
+.search-input .search_bar .sear_btn {
+	width: 80px;
 }
 </style>
 </head>
 <body>
 
-	
+
 	<jsp:include page="/header.jsp"></jsp:include>
-	
+
 
 
 	<div class="product">
@@ -145,76 +179,88 @@
 		</div>
 	</div>
 
-<div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h3 class="animate-charcter">Today's Offers</h3>
-                </div>
-            </div>
-        </div>
-        <div class="offers1" id="interface">
-     
-	<%
-	List<Product> productsList = (List<Product>) request.getAttribute("PRODUCTLIST");
-	for(Product product: productsList){
-	%>
-	  <div class="today" >
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h3 class="animate-charcter">Today's Offers</h3>
+			</div>
+		</div>
+	</div>
+	<div class="offers1" id="interface">
 
-        <a href="<%= request.getContextPath()%>/product/details?product_id=<%=product.getId() %>">
-            <img src="<%= product.getImageURL() %>" alt="<%= product.getName() %>">
-            <p><%= product.getName() %></p>
-       
-        <div class="pricecontain">
-            <div class="price101">
-                <h3>Special Price: </h3>
-                <h4>&#8377;<%=product.getPrice() - product.getDiscount() %></h4>
-            </div>
-            <div class="price11">
-                <h3>Actual Price: </h3>
-                <del>&#8377;<%= product.getPrice() %></del>
-            </div>
-        </div>
-        <div class="div_save">
-            <h3>You Save - &#8377;<%= product.getDiscount() %></h3>
-        </div>
-         </a>
-    </div>
-    
-    <%} %>
-        </div>
+		<%
+		List<Product> productsList = (List<Product>) request.getAttribute("PRODUCTLIST");
+		for (Product product : productsList) {
+		%>
+		<div class="today">
+
+			<a
+				href="<%=request.getContextPath()%>/product/details?product_id=<%=product.getId()%>">
+				<img src="<%=product.getImageURL()%>"
+				alt="<%=product.getName()%>">
+				<p><%=product.getName()%></p>
+
+				<div class="pricecontain">
+					<div class="price101">
+						<h3>Special Price:</h3>
+						<h4>
+							&#8377;<%=product.getPrice() - product.getDiscount()%></h4>
+					</div>
+					<div class="price11">
+						<h3>Actual Price:</h3>
+						<del>
+							&#8377;<%=product.getPrice()%></del>
+					</div>
+				</div>
+				<div class="div_save">
+					<h3>
+						You Save - &#8377;<%=product.getDiscount()%></h3>
+				</div>
+			</a>
+		</div>
+
+		<%
+		}
+		%>
+	</div>
 
 
-      
-        
-        <div class="fab">
-            <h1>FAB's PRIORITIES</h1>
-            <div class="human">
-                <div class="details">
-                    <img src="./assets/images/fert12.jpg" alt="Human Nutrition">
-                    <h2>Human Nutrition</h2>
-                    <hr class="trai">
-                    <p>Better soil and plant health means better human health. We promote best practices in fertilizer use to 
-                        support higher crop yields and more nutritious food.</p>
-                </div>
-                <div class="details">
-                    <img src="./assets/images/fert13.jpg" alt="Climate Change">
-                    <h2>Climate Change</h2>
-                    <hr class="trai">
-                    <p>We work across the agriculture value chain to reduce greenhouse gas emissions and increase sequestration of carbon in soil.</p>
-                </div>
-                <div class="details">
-                    <img src="./assets/images/fert14.jpg" alt="Sustainable Production">
-                    <h2>Sustainable Production</h2>
-                    <hr class="trai">
-                    <p>Fertilizers are fundamental to agriculture and our challenge is to feed the world sustainably. Sustainable fertilizer production is key to increasing our industry’s energy efficiency 
-                        and reducing CO2 emissions.</p>
-                </div>
-            </div>
-        </div>
-       
+
+
+	<div class="fab">
+		<h1>FAB's PRIORITIES</h1>
+		<div class="human">
+			<div class="details">
+				<img src="./assets/images/fert12.jpg" alt="Human Nutrition">
+				<h2>Human Nutrition</h2>
+				<hr class="trai">
+				<p>Better soil and plant health means better human health. We
+					promote best practices in fertilizer use to support higher crop
+					yields and more nutritious food.</p>
+			</div>
+			<div class="details">
+				<img src="./assets/images/fert13.jpg" alt="Climate Change">
+				<h2>Climate Change</h2>
+				<hr class="trai">
+				<p>We work across the agriculture value chain to reduce
+					greenhouse gas emissions and increase sequestration of carbon in
+					soil.</p>
+			</div>
+			<div class="details">
+				<img src="./assets/images/fert14.jpg" alt="Sustainable Production">
+				<h2>Sustainable Production</h2>
+				<hr class="trai">
+				<p>Fertilizers are fundamental to agriculture and our challenge
+					is to feed the world sustainably. Sustainable fertilizer production
+					is key to increasing our industry’s energy efficiency and reducing
+					CO2 emissions.</p>
+			</div>
+		</div>
+	</div>
+
 	<jsp:include page="/footer.jsp"></jsp:include>
-	
-	
+
+
 	<h1>List of Products</h1>
 	<br>
 
@@ -261,7 +307,7 @@
 		<a href="product/new">Create</a>
 	</button>
 
-
+	<script src="<%=request.getContextPath()%>/javascript/search.js"> </script>
 	<script>
 
 	let slideIndex = 0;
@@ -315,6 +361,9 @@
 	    showSlides(n - slideIndex);
 	  }
 	}
+	
+	
+	
 	</script>
 </body>
 </html>

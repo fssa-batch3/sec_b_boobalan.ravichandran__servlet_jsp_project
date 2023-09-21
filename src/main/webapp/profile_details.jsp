@@ -9,11 +9,10 @@
 <meta charset="ISO-8859-1">
 
 
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Neuton:ital,wght@0,200;0,300;1,400&display=swap" rel="stylesheet">
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -21,6 +20,8 @@
 <link rel="icon" type="image/x-icon" href="https://iili.io/J9HTxWb.png">
 <link rel="stylesheet" href="./css/header.css">
 <link rel="stylesheet" href="./css/user_profile.css">
+<link rel="stylesheet" href="<%= request.getContextPath()%>/css/style.css">
+
 <link rel="stylesheet" href="<%= request.getContextPath()%>/css/footer.css">
 <style>
 main {
@@ -87,14 +88,14 @@ main {
 	margin-left: 2vw;
 	background-color: rgb(206, 206, 206);
 	padding: 5px 13px;
-	font-size: 14px;
+	font-size: 16px;
 	color: rgb(90, 90, 90);
 	border-radius: 3px;
 }
 
 .address-details {
 	margin-bottom: 2px;
-	font-size: 15px;
+	font-size: 17px;
 }
 
 .address-details p {
@@ -139,7 +140,7 @@ main {
 
 .add-new-address {
 	width: 18vw;
-	padding: 12px 20px 7px 40px;
+
 	border-radius: 5px;
 	color: rgb(255, 255, 255);
 	border: 1.5px solid rgb(173, 173, 173);
@@ -153,6 +154,7 @@ color: rgb(255, 255, 255);
 text-decoration:none;
 }
 .add-new-address h3 {
+padding: 12px 20px 7px 40px;
 	display: flex;
 	font-weight: normal;
 	font-size: 15px !important;
@@ -166,11 +168,12 @@ text-decoration:none;
 
 .add-new-address h3:hover {
 	font-weight: bold;
+	color:#176047;
 }
 
 .add-new-address:hover {
 	background-color: #ffffff;
-	color: #176047;
+	color:#176047;
 	border: 1.5px solid #176047;
 	font-weight: bold;
 }
@@ -489,6 +492,7 @@ background-color: rgb(213, 213, 213);
 	}
 	.button button:hover {
 		background-color: rgb(3, 140, 53);
+		color:rgb(5, 83, 33);
 		box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 	}
 	footer {
@@ -638,12 +642,7 @@ background-color: rgb(213, 213, 213);
 							id="phone" name="email" value="<%=userDetails.getEmail()%>"
 							readonly>
 					</div>
-					<div class="user-personal-details password-container-class">
-						<label for="password">Password:</label> <input type="password"
-							id="password" value="<%=userDetails.getPassword()%>"
-							name="password" required> <span class="password-toggle"
-							onclick="togglePasswordVisibility()">Show</span>
-					</div>
+					
 
 
 				</div>
@@ -654,6 +653,8 @@ background-color: rgb(213, 213, 213);
 		</div>
 	</form>
 	<jsp:include page="/footer.jsp"></jsp:include>
+	<script src="<%= request.getContextPath()%>/javascript/search.js"> </script>
+	
 	<script>
 
  // edit profile button click
@@ -669,19 +670,7 @@ background-color: rgb(213, 213, 213);
  });
  
  
- 
- //show password function
- 	function togglePasswordVisibility() {
-			const passwordField = document.getElementById('password');
-			const passwordToggle = document.querySelector('.password-toggle');
-			if (passwordField.type === 'password') {
-				passwordField.type = 'text';
-				passwordToggle.textContent = 'Hide';
-			} else {
-				passwordField.type = 'password';
-				passwordToggle.textContent = 'Show';
-			}
-		}
+
 		
     </script>
 

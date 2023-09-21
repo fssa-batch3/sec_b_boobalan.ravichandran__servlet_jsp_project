@@ -202,7 +202,7 @@ form {
 		<%
 		}else{
 		%>
-		<form action="create_address" method="post">
+		<form action="create_address" method="post"  id="addressForm">
 		
 			<div class="address-title">
 				<h2>Add Your New Address</h2>
@@ -330,7 +330,29 @@ form {
 	      errorMessage.textContent = "";
 	    }
 	});
+	<%if(addressDetails == null){%>
+	document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById("addressForm");
+        form.addEventListener("submit", function(event) {
+            // Check if any of the input fields are empty
+            const inputs = form.querySelectorAll("input[type=text], select");
+            let isValid = true;
 
+            inputs.forEach(function(input) {
+                if (input.value.trim() === "") {
+                    isValid = false;
+                
+                }
+            });
+
+            if (!isValid) {
+                // Prevent the form from submitting
+                event.preventDefault();
+                alert("Please fill in all required fields.");
+            }
+        });
+    });
+<%}%>
 	</script>
 </body>
 </html>

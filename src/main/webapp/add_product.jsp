@@ -99,7 +99,12 @@ button[type="submit"]:hover {
 
 color:red;
 }
-
+#myNumberInput::-webkit-inner-spin-button,
+#myNumberInput::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
 </style>
 </head>
 <body>
@@ -164,7 +169,9 @@ color:red;
 
         <label>Manufacture:</label>
         <input type="text" name="manufacture" required>
-       
+        
+       <label>Stock Count:</label>
+        <input type="number" id="myNumberInput" name="stock_count" required pattern="[0-9]+" min="1">
 
         <label>Price:</label>
         <input type="text" name="price" id="custom-number-input" required pattern="[0-9]+" min="1">
@@ -195,10 +202,10 @@ color:red;
 
 		weightInput.addEventListener("input", () => {
 		    const inputValue = weightInput.value.trim();
-		    const isValidInput = /^(?!0(g|kg|gms|ml|l)$)(\d+(\.\d+)?\s*(g|kg|gm|gms|ml|l))$/i.test(inputValue);
+		    const isValidInput = /^(?!0(g|kg|gms|gm|ml|l)$)(\d+(\.\d+)?\s*(g|kg|gm|gms|ml|l))$/i.test(inputValue);
 
 		    if (!isValidInput) {
-		        errorMessage.textContent = "Please enter a valid product weight (e.g., 20 ml, 2.5kg) excluding 0g, 0kg, 0gms, 0ml, or 0l.";
+		        errorMessage.textContent = "Please enter a valid product weight (e.g., 20 ml, 2.5kg) excluding 0g, 0kg, 0gm, 0gms, 0ml, or 0l.";
 		        errorMessage.style.display = "block";
 		    } else {
 		        errorMessage.textContent = ""; 

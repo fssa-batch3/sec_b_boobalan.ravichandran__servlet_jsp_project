@@ -41,7 +41,7 @@ public class UpdateProductPriceServlet extends HttpServlet {
 		try {
 			priceService.updatePrice(productId, priceValue, discountValue);
 			out.println("Product Price updated successfully");
-			response.sendRedirect(request.getContextPath() + "/index");
+			response.sendRedirect(request.getContextPath() + "/get_all_products_admin");
 		} catch (ServiceException | ValidationException e) {
 
 			request.setAttribute("PRICEERRORDETAILS", e.getMessage());
