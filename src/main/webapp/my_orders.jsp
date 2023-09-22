@@ -92,7 +92,8 @@ margin-left:60vw;
 }
 .color-heads h4{
 margin-left:.6vw;
-margin-top:.3vh;
+letter-spacing:1.5px;
+font-size:20px;
  color:green;
 }
 
@@ -301,26 +302,35 @@ margin:3vh 0 1.5vh 22vw;
 					<%
 				java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("dd/MM/yyyy");
 
-				String orderDateStr = formatter.format(orderdate);
-				String deliveryDateStr = formatter.format(deliveryDate);
+					String orderDateStr = "";
+					String deliveryDateStr = "";
 
-				java.util.Date currentDate = new java.util.Date();
+					if (orderdate != null) {
+					    orderDateStr = formatter.format(orderdate);
+					}
 
+					if (deliveryDate != null) {
+					    deliveryDateStr = formatter.format(deliveryDate);
+					}
+
+					java.util.Date currentDate = new java.util.Date();
 				String orderStatus = "";
 
-				if (currentDate.compareTo(deliveryDate) >= 0) {
-					if (order.isStatus()) {
-						orderStatus = "Delivered";
-					} else {
-						orderStatus = "Cancelled";
-					}
-				} else {
-					if (order.isStatus()) {
-						orderStatus = "Not Delivered";
-					} else {
-						orderStatus = "Cancelled";
-					}
-				}
+				if (deliveryDate != null) {
+				    if (currentDate.compareTo(deliveryDate) >= 0) {
+				        if (order.isStatus()) {
+				            orderStatus = "Delivered";
+				        } else {
+				            orderStatus = "Cancelled";
+				        }
+				    } else {
+				        if (order.isStatus()) {
+				            orderStatus = "Not Delivered";
+				        } else {
+				            orderStatus = "Cancelled";
+				        }
+				    }
+				} 
 				%>
 
 					<div class="order_date_deails">

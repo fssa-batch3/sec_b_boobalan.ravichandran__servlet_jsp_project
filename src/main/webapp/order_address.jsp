@@ -316,6 +316,14 @@ width:24vw;
 cursor:pointer;
    
 }
+.error1, .error{
+width:30vw;
+margin-top:1vh;
+color:red;
+}
+#pincode{
+color:black;
+}
 </style>
 </head>
 <body>
@@ -482,11 +490,12 @@ cursor:pointer;
 								value="Tamil Nadu" id="state" readonly>
 						</div>
 					</div>
+					<div class="error1"></div>
 					<div class="add-address-details">
 						<label for="mobile">Mobile Number</label> <input type="text"
 							name="mobile_number" id="mobile">
 					</div>
-
+						<div class="error"></div>
 
 					<div class="save-cancel-container">
 						<button type="submit" id="save-address">SAVE DELIVERY
@@ -510,12 +519,118 @@ cursor:pointer;
      document.querySelector(".add-new-address-div").addEventListener("click",() =>{
          newAddress.classList.add("show-new-address");
      });
+     const mobileInput = document.getElementById("mobile");
+
+ 	const errorMessage = document.querySelector(".error");
+
+ 	mobileInput.addEventListener("input", () => {
+ 	    const inputValue = mobileInput.value.trim(); // remove leading/trailing whitespace
+ 	    const isValidInput = /^[6-9]{1}[0-9]{9}$/.test(inputValue);
+ 	   //   /^[6-9]\d{9}$/.test(inputValue) && !/^\d*(\d)\1{9}\d*$/.test(inputValue); // use regex to match the updated criteria
+ 	    if (!isValidInput || inputValue === "") {
+ 	 
+ 	      if (inputValue === "") {
+ 	        errorMessage.textContent = "Please enter a mobile number.";
+ 	      } else if (/^\d+$/.test(inputValue)) {
+ 	        errorMessage.textContent = "Enter a valid 10-digit mobile number.";
+ 	      } else {
+ 	        errorMessage.textContent = "Please enter digits only.";
+ 	      }
+ 	      errorMessage.style.color = "red";
+ 	    } else {
+ 	     
+ 	      errorMessage.textContent = "";
+ 	    }
+ 	});
+ 	const errorMessage1 = document.querySelector(".error1");
+ 	const pincodeInput = document.getElementById('pincode');
+
+ 	pincodeInput.addEventListener('input', function() {
+ 	  const pincode = pincodeInput.value.trim();
+
+ 	  if (pincode !== '') {
+ 	    const pincodeRegex = /^6\d{5}$/; // regex pattern to match a pincode starting with 6 and having a total of 6 digits
+
+ 	    if (!pincodeRegex.test(pincode)) {
+ 	      errorMessage1.textContent = 'Invalid pincode! Please enter a valid pincode';
+ 	      pincodeInput.classList.add('error');
+ 	    } else {
+ 	      errorMessage1.textContent = ''; // Clear the error message if the pincode is valid
+ 	      pincodeInput.classList.remove('error');
+ 	    }
+
+ 	    // Check the pincode range
+ 	    const pincodeValue = parseInt(pincode, 10);
+ 	    if (pincodeValue < 600001 || pincodeValue > 643253) {
+ 	      errorMessage1.textContent = 'Invalid pincode! Please enter a valid pincode';
+ 	      pincodeInput.classList.add('error');
+ 	    }
+ 	  }
+ 	});
+
+ 	
+ 	
+
      <%}%>
   <%if(addressList.isEmpty()){%>
      document.querySelector(".add-new-address-div-address").addEventListener("click",() =>{
          newAddress.classList.add("show-new-address");
      });
-<%}%>
+     const mobileInput = document.getElementById("mobile");
+ 	const formGroup = document.querySelector(".form-group");
+ 	const errorMessage = document.querySelector(".error");
+
+ 	mobileInput.addEventListener("input", () => {
+ 	    const inputValue = mobileInput.value.trim(); // remove leading/trailing whitespace
+ 	    const isValidInput = /^[6-9]{1}[0-9]{9}$/.test(inputValue);
+ 	   //   /^[6-9]\d{9}$/.test(inputValue) && !/^\d*(\d)\1{9}\d*$/.test(inputValue); // use regex to match the updated criteria
+ 	    if (!isValidInput || inputValue === "") {
+ 	      formGroup.classList.remove("valid");
+ 	      formGroup.classList.add("invalid");
+ 	      if (inputValue === "") {
+ 	        errorMessage.textContent = "Please enter a mobile number.";
+ 	      } else if (/^\d+$/.test(inputValue)) {
+ 	        errorMessage.textContent = "Enter a valid 10-digit mobile number.";
+ 	      } else {
+ 	        errorMessage.textContent = "Please enter digits only.";
+ 	      }
+ 	      errorMessage.style.color = "red";
+ 	    } else {
+ 	      formGroup.classList.remove("invalid");
+ 	      formGroup.classList.add("valid");
+ 	      errorMessage.textContent = "";
+ 	    }
+ 	});
+ 	const errorMessage1 = document.querySelector(".error1");
+ 	const pincodeInput = document.getElementById('pincode');
+
+ 	pincodeInput.addEventListener('input', function() {
+ 	  const pincode = pincodeInput.value.trim();
+
+ 	  if (pincode !== '') {
+ 	    const pincodeRegex = /^6\d{5}$/; // regex pattern to match a pincode starting with 6 and having a total of 6 digits
+
+ 	    if (!pincodeRegex.test(pincode)) {
+ 	      errorMessage1.textContent = 'Invalid pincode! Please enter a valid pincode';
+ 	      pincodeInput.classList.add('error');
+ 	    } else {
+ 	      errorMessage1.textContent = ''; // Clear the error message if the pincode is valid
+ 	      pincodeInput.classList.remove('error');
+ 	    }
+
+ 	    // Check the pincode range
+ 	    const pincodeValue = parseInt(pincode, 10);
+ 	    if (pincodeValue < 600001 || pincodeValue > 643253) {
+ 	      errorMessage1.textContent = 'Invalid pincode! Please enter a valid pincode';
+ 	      pincodeInput.classList.add('error');
+ 	    }
+ 	  }
+ 	});
+
+ 	
+ 	
+ <%}%>
+
      document.getElementById("exit-this-page").addEventListener("click",()=>{
          newAddress.classList.remove("show-new-address");
      })
@@ -562,7 +677,27 @@ function confirmOrder() {
     	});
 
 
+     document.addEventListener("DOMContentLoaded", function() {
+         const form = document.getElementById("save-address");
+         form.addEventListener("submit", function(event) {
+             // Check if any of the input fields are empty
+             const inputs = form.querySelectorAll("input[type=text], select");
+             let isValid = true;
 
+             inputs.forEach(function(input) {
+                 if (input.value.trim() === "") {
+                     isValid = false;
+                 
+                 }
+             });
+
+             if (!isValid) {
+                 // Prevent the form from submitting
+                 event.preventDefault();
+                 alert("Please fill in all required fields.");
+             }
+         });
+     });
   
      </script>
 </body>

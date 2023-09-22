@@ -515,7 +515,14 @@ background-color: rgb(213, 213, 213);
 	<main>
 		<div class="user-profile-details">
 			<div class="address-container">
-
+               <div>
+               <div>
+               <a href=""><img src=" ">My Orders</a>
+               </div>
+               <div>
+                <a href="">Logout</a>
+               </div>
+               </div>
 				<div class="address-title">
 					<h2>Manage Addresses</h2>
 				</div>

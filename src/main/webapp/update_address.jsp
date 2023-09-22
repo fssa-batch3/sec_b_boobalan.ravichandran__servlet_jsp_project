@@ -92,6 +92,12 @@ form {
 .pincode-state-container {
 	display: flex;
 }
+.error1{
+width:30vw;
+margin-top:1vh;
+color:red;
+
+}
 </style>
 </head>
 
@@ -99,7 +105,13 @@ form {
 	<main>
 		<%
 		DeliveryAddresses addressDetails = (DeliveryAddresses) request.getAttribute("UPDATE_ADDRESS");
-		if (addressDetails != null) {
+		String errorDetails = (String) request.getAttribute("ERROR_DETAILS");
+		%>
+		
+		<%if(errorDetails !=null){ %>
+		<h1></h1>
+		<%} %>
+		<% if (addressDetails != null) {
 		%>
 		<form action="update_address" method="post">
 		
@@ -182,11 +194,13 @@ form {
 						Value="<%=addressDetails.getPincode()%>" name="pincode"
 						id="pincode">
 				</div>
+			
 				<div class="add-address-details pincode-details">
 					<label for="state">State</label> <input type="text" name="state"
 						value="Tamil Nadu" id="state" readonly>
 				</div>
 			</div>
+				<div class="error1"></div>
 			<div class="add-address-details form-group">
 				<label for="mobile">Mobile Number</label> <input type="text"
 					name="mobile" Value="<%=addressDetails.getMobileNumber()%>"
@@ -283,11 +297,14 @@ form {
 						name="pincode"
 						id="pincode">
 				</div>
+			
 				<div class="add-address-details pincode-details">
 					<label for="state">State</label> <input type="text" name="state"
 						value="Tamil Nadu" id="state" readonly>
 				</div>
+				
 			</div>
+				<div class="error1"></div>
 			<div class="add-address-details form-group">
 				<label for="mobile">Mobile Number</label> <input type="text"
 					name="mobile" 
@@ -330,6 +347,32 @@ form {
 	      errorMessage.textContent = "";
 	    }
 	});
+	const errorMessage1 = document.querySelector(".error1");
+	const pincodeInput = document.getElementById('pincode');
+
+	pincodeInput.addEventListener('input', function() {
+	  const pincode = pincodeInput.value.trim();
+
+	  if (pincode !== '') {
+	    const pincodeRegex = /^6\d{5}$/; // regex pattern to match a pincode starting with 6 and having a total of 6 digits
+
+	    if (!pincodeRegex.test(pincode)) {
+	      errorMessage1.textContent = 'Invalid pincode! Please enter a valid pincode';
+	      pincodeInput.classList.add('error');
+	    } else {
+	      errorMessage1.textContent = ''; // Clear the error message if the pincode is valid
+	      pincodeInput.classList.remove('error');
+	    }
+
+	    // Check the pincode range
+	    const pincodeValue = parseInt(pincode, 10);
+	    if (pincodeValue < 600001 || pincodeValue > 643253) {
+	      errorMessage1.textContent = 'Invalid pincode! Please enter a valid pincode';
+	      pincodeInput.classList.add('error');
+	    }
+	  }
+	});
+
 	<%if(addressDetails == null){%>
 	document.addEventListener("DOMContentLoaded", function() {
         const form = document.getElementById("addressForm");
@@ -350,6 +393,7 @@ form {
                 event.preventDefault();
                 alert("Please fill in all required fields.");
             }
+            
         });
     });
 <%}%>

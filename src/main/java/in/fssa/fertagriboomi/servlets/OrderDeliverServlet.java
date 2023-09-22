@@ -78,6 +78,7 @@ public class OrderDeliverServlet extends HttpServlet {
         	        "addToCartItem = addToCartItem.filter(item => item.userUniqueId !== logedUser);" +
         	        "localStorage.setItem('addToCartItem', JSON.stringify(addToCartItem));";
         	    response.getWriter().write("<script>" + jsCode + "</script>");
+        	    
         	} 
 
            

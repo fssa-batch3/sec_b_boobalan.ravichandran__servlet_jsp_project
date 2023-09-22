@@ -61,7 +61,9 @@ public class CreateAddressServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/profile_details");
 		} catch (ValidationException | ServiceException e) {
 			e.printStackTrace();
-			out.println(e.getMessage());
+			//out.println(e.getMessage());
+			String getError = e.getMessage();
+			response.sendRedirect("new_address?error=" + getError);
 		}
 	}
 

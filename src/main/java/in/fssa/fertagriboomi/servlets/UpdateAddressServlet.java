@@ -65,9 +65,10 @@ public class UpdateAddressServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/profile_details");
 		} catch (ValidationException | ServiceException e) {
 			out.println(e.getMessage());
-			// request.setAttribute("ERRORDETAILS", e.getMessage());
-			// RequestDispatcher rd = request.getRequestDispatcher("new_address");
-			// rd.forward(request, response);
+
+			request.setAttribute("ERROR_DETAILS", e.getMessage());
+			RequestDispatcher rd = request.getRequestDispatcher("edit_address?address_id=" + addressId);
+			rd.forward(request, response);
 		}
 
 	}

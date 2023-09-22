@@ -16,7 +16,7 @@ import in.fssa.fertagriboomi.service.OrdersService;
  * Servlet implementation class CancellOrderServlet
  */
 @WebServlet("/order_details/cancel_order")
-public class CancellOrderServlet extends HttpServlet {
+public class CancelOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
 

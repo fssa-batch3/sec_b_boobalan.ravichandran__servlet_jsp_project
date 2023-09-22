@@ -42,7 +42,7 @@
   position: fixed;
   margin-top:2vh;
   right: 32vw;
-  background-color: #176047;
+background-color: #b70e46;
   color: white;
   padding: 15px 30px;
   font-size:18px;
@@ -311,7 +311,7 @@ div_description.append(divDesc);
 const description_ul = document.createElement("ul");
 divDesc.append(description_ul);
 
-const productDescription = '<%=product.getDescription()%>';
+const productDescription = "<%=product.getDescription()%>";
 const applicationPoints = productDescription.split(". ");
 
 applicationPoints.forEach((point) => {
@@ -358,7 +358,7 @@ applicationPoints.forEach((point) => {
 	divbeni.append(benifits_ul);
 
 	// <li>...</li>
-	const productBenifits = '<%=product.getBenefits()%>'
+	const productBenifits = "<%=product.getBenefits()%>"
 	const benifitsPoints = productBenifits.split(". ");
 	// console.log(benifitsPoints)
 
@@ -406,7 +406,7 @@ applicationPoints.forEach((point) => {
 
 
 	// <li>...</li>
-	const productApplication = '<%=product.getApplication()%>';
+	const productApplication = "<%=product.getApplication()%>";
 	const methodPoints = productApplication.split(". ");
 	// console.log(benifitsPoints)
 

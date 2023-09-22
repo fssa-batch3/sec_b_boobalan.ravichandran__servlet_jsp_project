@@ -432,46 +432,6 @@ transform:translateY(0);
 }
 
 @
-keyframes color { 0% {
-	background: #0fa7a7;
-}
-
-20
-%
-{
-background
-:
-#048420;
-}
-40
-%
-{
-background
-:
-#4fa300;
-}
-60
-%
-{
-background
-:
-#ff9500;
-}
-80
-%
-{
-background
-:
-#015c02;
-}
-100
-%
-{
-background
-:
-#38c8c3;
-}
-}
 .averageRating h1 {
 	font-size: 34px;
 }
@@ -499,7 +459,15 @@ background
 .addvertisement img {
 	width: 45vw;
 }
-
+@keyframes color {
+    0%   { background:  #bcb616; }
+    20%  { background: #048420; }
+    40%  { background: #4fa300; }
+    60%  { background: #ff9500; }
+    80%  { background: #015c02; }
+    100% { background: #38c8c3; }
+    
+  }
 /* ---------========== @media (mobile screen edit) ===========---------------*/
 @media screen and (max-width:400px) {
 	.fert1 img {

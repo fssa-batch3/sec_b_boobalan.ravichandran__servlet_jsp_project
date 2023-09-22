@@ -175,19 +175,22 @@
 	font-size: 22px;
 	margin-top: 0;
 }
-.single-order a{
+.order-single-container .star-review{
 text-decoration:none;
 padding:1.5vh 1.5vw .5vh .9vw;
  color:rgb(12, 3, 142);
  font-weight:bold;
  display:flex;
+ width:15vw;
+ font-size:13px;
+ margin-left:1vw;
 }
-.single-order a img{
-width:2.5vw;
-height:4vh;
+.order-single-container .star-review img{
+width:2vw;
+height:3vh;
 margin-top:-1vh;
 }
-.single-order a:hover{
+.order-single-container .star-review:hover{
 background-color: rgb(242, 242, 242);
 box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 transition: all 0.4s;
@@ -253,6 +256,7 @@ Orders order = (Orders) request.getAttribute("ORDERS");
             java.util.Date currentDateValue = new java.util.Date();
         %>
     <a href="<%= request.getContextPath()%>/product/details?product_id=<%=orders.getProductId() %>">
+        <div class="order-single-container">
         <div class="single-order">
             <img src="<%=orders.getProductImage()%>"
                 alt="<%=orders.getProductName()%>">
@@ -263,13 +267,15 @@ Orders order = (Orders) request.getAttribute("ORDERS");
                 <del>
                     &#8377;<%=orders.getDiscount()%></del>
             </div>
-            <%
+         
+        </div>
+           <%
          
                 if (currentDateValue.compareTo(productDeliver) >= 0 && order.isStatus() ) {
                 	boolean isReviewsExists = new ReviewsAndRatingsService().findRatingAndReiewsByOrderItemId(orders.getId());
                 	if(!isReviewsExists){
                    %>
-            <a href="<%= request.getContextPath()%>/my_order/order_details/review_ratings?product_id=<%=orders.getProductId() %>&order_item_id=<%=orders.getId() %>&name=<%=address.getPersonName() %>&order_id=<%=order.getId() %>"><img src="<%= request.getContextPath()%>/assets/images/star.webp" alt="facebook">Rate & Review Product</a>
+            <a class="star-review" href="<%= request.getContextPath()%>/my_order/order_details/review_ratings?product_id=<%=orders.getProductId() %>&order_item_id=<%=orders.getId() %>&name=<%=address.getPersonName() %>&order_id=<%=order.getId() %>"><img src="<%= request.getContextPath()%>/assets/images/star.webp" alt="facebook">Rate & Review Product</a>
             <%}} %>
         </div>
     </a>
@@ -381,13 +387,20 @@ Orders order = (Orders) request.getAttribute("ORDERS");
     <%
     if (currentDate.compareTo(deliveryDate) == -1 && order.isStatus()) {
     %>
-    <a href="<%=request.getContextPath()%>/order_details/cancel_order?order_id=<%=order.getId() %>">Cancel Order</a>
+    <a  href="#" onclick="confirmCancel('<%=request.getContextPath()%>/order_details/cancel_order?order_id=<%=order.getId() %>')">Cancel Order</a>
     <%
     }
     %></div>
 </div>
 <jsp:include page="/footer.jsp"></jsp:include>
 <script src="<%= request.getContextPath()%>/javascript/search.js"> </script>
+<script>
+function confirmCancel(url) {
+    if (confirm("Are you sure you want to cancel this order?")) {
+        window.location.href = url; // Navigate to the specified URL
+    }
+}
+</script>
 
 </body>
 </html>

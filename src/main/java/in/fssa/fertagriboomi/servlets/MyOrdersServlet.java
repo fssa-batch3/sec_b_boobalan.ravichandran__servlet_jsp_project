@@ -37,7 +37,9 @@ public class MyOrdersServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		} catch (ServiceException | ValidationException e) {
 			e.printStackTrace();
-			throw new ServletException(e.getMessage());
+			//throw new ServletException(e.getMessage());
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/my_orders.jsp");
+			dispatcher.forward(request, response);
 		
 		}
 		

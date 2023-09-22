@@ -73,7 +73,7 @@ a{
 }
 .cart22 h1{
     font-size: 22px;
-    margin-left: 20px;
+    margin-left:4.5vw;
     width:30vw;
     text-align: left;
 }
@@ -413,6 +413,7 @@ margin-top: 16px;
 		String loggedUserUniqueEmail = (String) request.getSession().getAttribute("LOGGEDUSER");
 		%>
      
+     
             <!-- -===================/cart class start/------------================== -->
             <div class="cart" id="cartRemove">
                 <!-- -===================/cart1 class start/------------================== -->
@@ -527,6 +528,7 @@ const cartIds = JSON.parse(localStorage.getItem("addToCartItem")) || [];
 let allProducts = []; // Initialize the array
 
 
+
 let logedUserDetails;
 
 // Define a function to fetch product data
@@ -546,7 +548,7 @@ async function getAllProducts() {
         allProducts = responseData.data;
 
         // Now, 'allProducts' contains the array of product data
-        //console.log(allProducts);
+        console.log(allProducts);
         //console.log("wishListProduct", cartIds);
         logedUserDetails = '<%=loggedUserUniqueEmail%>';
         
@@ -645,7 +647,7 @@ function processAllProductsDetails(loadProducts) {
         // Initialize the selectedQuantity and initialPrice
         let selectedQuantity = 1; // Default to 1
         let initialPrice = loadProduct.productPrice; // Default to the product price for quantity 1
-
+        let initialDiscount = loadProduct.productDiscount;
         // Add an event listener to update the price and discount based on quantity change
         selectQuantity.addEventListener('change', function () {
             // Get the new selected quantity
@@ -654,25 +656,27 @@ function processAllProductsDetails(loadProducts) {
             // Calculate the new price and discount based on the selected quantity
             const newPrice = selectedQuantity * loadProduct.productPrice;
             const newDiscount = selectedQuantity * loadProduct.productDiscount;
-
+              const newActualPrice = newPrice-newDiscount;
             // Update the displayed price and discount
-            productPrice.textContent = '\u20B9 ' + newPrice;
-            discountElement.textContent = 'You Save: \u20B9 ' + newDiscount;
+          //  productPrice.textContent = '\u20B9 ' + newActualPrice;
+          //  discountElement.textContent = 'You Save: \u20B9 ' + newDiscount;
 
             // Calculate the change in price and discount
             const priceChange = newPrice - initialPrice;
-            const discountChange = newDiscount - (selectedQuantity * loadProduct.productDiscount);
+            const discountChange = newDiscount - initialDiscount ;
 
+            
+  
             // Update the total price and total discount
             totalPrice += priceChange;
             totalDiscount += discountChange;
-
+          
             // Update the initialPrice for the next change event
             initialPrice = newPrice;
-
+            initialDiscount = newDiscount;
             // Calculate the final price
             const finalPrice = totalPrice - totalDiscount;
-
+           
             // Update the total price in your total price element (div_cart111_p)
             div_cart111_p.innerText = "\u20B9" + totalPrice;
 
@@ -700,7 +704,7 @@ function processAllProductsDetails(loadProducts) {
         // Create a del element for the original price
         const actualPriceElement = document.createElement('del');
         actualPriceElement.id = 'actual_price';
-        actualPriceElement.textContent = '\u20B9 ' + actualPrice;
+        actualPriceElement.textContent = '\u20B9 ' + loadProduct.productPrice;
 
         // Append price elements to the price div
         priceDiv.appendChild(productPrice);
@@ -768,15 +772,19 @@ function processAllProductsDetails(loadProducts) {
         const price1 = loadProduct.productPrice;
         const disc = loadProduct.productDiscount;
         totalPrice += price1;
-        totalDiscount += selectedQuantity * disc;
+   
+        totalDiscount +=disc;
+        //console.log("totalDiscount",totalDiscount);
     });
 
     // Calculate the final price outside the loop
     const finalPrice = totalPrice - totalDiscount;
 
+    
     // Update the total price in your total price element (div_cart111_p)
     div_cart111_p.innerText = "\u20B9" + totalPrice;
 
+    console.log("outer totalDiscount",totalDiscount);
     // Update the total discount in your total discount element (div_cart112_p)
     div_cart112_p.innerText = "\u20B9" + totalDiscount;
 
@@ -840,8 +848,6 @@ function processAllProductsDetails(loadProducts) {
     	    window.location.reload();
     	  }
     	}
-    
-    
     const placeOrderButton = document.getElementById("place_order");
     placeOrderButton.addEventListener("click", function () {
         const productsInOrder = [];
