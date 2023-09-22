@@ -27,18 +27,21 @@ public class CreateUserServlet extends HttpServlet {
 			throws ServletException, IOException {
 		User user = new User();
 
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		long phoneNumber = Long.parseLong(request.getParameter("phone"));
-
-		user.setName(name);
-		user.setEmail(email);
-		user.setPassword(password);
-		user.setPhoneNumber(phoneNumber);
-
+		
+	
 		UserService userService = new UserService();
 		try {
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+			long phoneNumber = Long.parseLong(request.getParameter("phone"));
+
+			user.setName(name);
+			user.setEmail(email);
+			user.setPassword(password);
+			
+			user.setPhoneNumber(phoneNumber);
+		
 			userService.createUser(user);
 			System.out.println("User register successfully");
 			response.sendRedirect(request.getContextPath() + "/login");
@@ -46,7 +49,7 @@ public class CreateUserServlet extends HttpServlet {
 //			e.printStackTrace();
 //			throw new ServletException(e);
 			String getError = e.getMessage();
-
+			request.setAttribute("USER_DETAILS", user);
 			response.sendRedirect("register?error=" + getError);
 		}
 

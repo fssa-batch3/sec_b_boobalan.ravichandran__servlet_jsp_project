@@ -499,6 +499,39 @@ background-color: rgb(213, 213, 213);
 		display: none;
 	}
 }
+
+.logout-class a, .my-orders-class a {
+display:flex;
+text-decoration:none;
+color:white;
+font-weight:bold;
+
+font-size:19px;
+
+}
+.logout-class a p, .my-orders-class a p{
+margin:1vh 0 0 1.5vw;
+}
+.logout-class, .my-orders-class{
+padding:2.5vh 3vw;
+  background-color: #176047;
+}
+.logout-class:hover, .my-orders-class:hover{
+ background-color: #18a473;
+}
+.logout-class{
+border-top:2px solid white;
+border-bottom:2px solid white;
+}
+.logout-class a img{
+width:3vw;
+height:4.5vh;
+
+}
+.my-orders-class a img{
+width:3vw;
+height:4.5vh;
+} 
 </style>
 </head>
 
@@ -516,11 +549,11 @@ background-color: rgb(213, 213, 213);
 		<div class="user-profile-details">
 			<div class="address-container">
                <div>
-               <div>
-               <a href=""><img src=" ">My Orders</a>
+               <div class="my-orders-class">
+               <a href="<%= request.getContextPath()%>/my_orders"><img src="https://iili.io/JJuYZue.png"><p>My Orders</p></a>
                </div>
-               <div>
-                <a href="">Logout</a>
+               <div class="logout-class">
+                <a href="logout"><img src="https://iili.io/JJuI9x2.png"><p>Logout</p></a>
                </div>
                </div>
 				<div class="address-title">
@@ -611,9 +644,7 @@ background-color: rgb(213, 213, 213);
 					<div class="edit-profile">
 						<a href="#"><h3>UPDATE PROFILE</h3></a>
 					</div>
-					<div class="del_account">
-						<a href="logout"><h3>LOGOUT</h3></a>
-					</div>
+					
 				</div>
 
 			</div>

@@ -1,3 +1,4 @@
+<%@page import="in.fssa.fertagriboomi.model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -16,6 +17,9 @@
 </head>
 <body>
 
+<%User user = (User)  request.getAttribute("USER_DETAILS");
+
+%>
 
 
 
@@ -26,14 +30,14 @@
 			<h1>Create Your Account</h1>
 			<div class="form-group">
 
-				<input type="text" class="form-control" value="9629223357"
+				<input type="text" class="form-control" value="<%=(user != null) ? user.getPhoneNumber() : ""%>"
 					id="mobile" required="true" name="phone"
 					title="Enter 10 number only" maxlength="10"  autofocus> <label
 					for="mobile" class="form-label"> Mobile Number </label>
 			</div>
 
 			<div class="form-group form-group1">
-				<input type="email" class="form-control" value="rk66@gmail.com"
+				<input type="email" class="form-control" value="<%=(user != null) ? user.getEmail() : ""%>"
 					id="email" required name="email"> <label for="email"
 					class="form-label">Email address</label>
 			</div>
@@ -41,14 +45,14 @@
 			<div class="form-group form-group2">
 
 				<input type="text" class="form-control" id="full_name"
-					value="Boobalan" required="true" name="name"> <label
+					value="<%=(user != null) ? user.getName() : ""%>" required="true" name="name"> <label
 					for="full_name" class="form-label">Enter Your Name</label>
 			</div>
 
 
 
 			<div class="form-group form-group3">
-				<input type="password" class="form-control" value="Amazon99@"
+				<input type="password" class="form-control" value="<%=(user != null) ? user.getPassword() : ""%>"
 					id="txtPassword" name="password" required="true"> <label
 					for="txtPassword" class="form-label">Set Password</label>
 

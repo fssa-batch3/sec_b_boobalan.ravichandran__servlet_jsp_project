@@ -39,11 +39,7 @@ public class AddToCartToAddressServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Set CORS headers to allow cross-origin requests
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type");
-
+    
         try {
             // Retrieve the JSON data from the request
 
@@ -51,7 +47,7 @@ public class AddToCartToAddressServlet extends HttpServlet {
             HttpSession session = request.getSession();
             List<Map<String, Object>> productsInOrder = JSONUtil.getJSONArray(request, "productsInOrder");
             session.setAttribute("productsInOrder", productsInOrder);
-
+        
             List<Map<String, Object>> ordersList = new ArrayList<>(); // Initialize outside the loop
 
             if (productsInOrder != null) {

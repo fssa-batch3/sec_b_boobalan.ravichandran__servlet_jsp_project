@@ -1860,7 +1860,7 @@ width:80px;
     font-size: 20px;
     border: 1.5px solid rgb(24, 8, 115);
     box-sizing: border-box;
-    border-radius: 50px;
+    border-radius: 16px;
 }
 
 .dropbtn, .dropbtn1, .dropbtn2{

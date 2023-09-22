@@ -411,3 +411,45 @@ body {
 	box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
 		rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
+
+
+.search-input .search_bar .input0 {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+	outline: none;
+	padding: 10px 80px 10px 20px;
+	font-size: 16px;
+	border: 1.5px solid rgb(24, 8, 115);
+	box-sizing: border-box;
+	border-radius: 16px;
+}
+
+.search_bar .sear_btn {
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 1;
+	height: 100%;
+	width: 60px;
+	background-color: orangered;
+	color: white;
+	border: none;
+	border-radius: 0 15px 15px 0;
+	font-size: 18px;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.search_bar .input0:focus {
+	border: 1.5px solid rgb(4, 93, 50);
+    
+	/* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+}
+
+.search_bar .sear_btn:hover {
+	background-color: rgb(4, 4, 77);
+	transition:2s a11;
+}

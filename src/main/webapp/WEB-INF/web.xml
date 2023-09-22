@@ -22,4 +22,5 @@
 		<error-code>500</error-code> <!-- HTTP Error code Page Not found -->
 		<location>/content-not-found.jsp</location>
 	</error-page>
+	
 </web-app>

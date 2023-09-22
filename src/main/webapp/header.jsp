@@ -10,6 +10,7 @@
 margin-right:7vw;
 margin-left:4vw;
 }
+
 </style>
 	<div class="user_header">
 		<div class="header">
@@ -178,7 +179,7 @@ body {
 	font-size: 16px;
 	border: 1.5px solid rgb(24, 8, 115);
 	box-sizing: border-box;
-	border-radius: 50px;
+	border-radius: 16px;
 }
 
 .search_bar .sear_btn {
@@ -191,7 +192,7 @@ body {
 	background-color: orangered;
 	color: white;
 	border: none;
-	border-radius: 0 50px 50px 0;
+	border-radius: 0 15px 15px 0;
 	font-size: 18px;
 	box-sizing: border-box;
 	cursor: pointer;
@@ -199,12 +200,13 @@ body {
 
 .search_bar .input0:focus {
 	border: 1.5px solid rgb(4, 93, 50);
-
+    
 	/* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
 }
 
 .search_bar .sear_btn:hover {
 	background-color: rgb(4, 4, 77);
+	transition:2s a11;
 }
 /* search bar end */
 /* head class start */
@@ -238,7 +240,8 @@ body {
 	color: rgb(11, 2, 51);
 	font-weight: bold;
 	display: flex;
-	margin-left: 40px;
+	margin-right: 3vw;
+	margin-left:3vw;
 }
 
 .hero .hero_list11 img {
@@ -514,6 +517,9 @@ body {
 	box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
 		rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
+.all_nave_links{
+margin-left:4vw;
+}
 </style>
 		<div class="user_header">
 			<div class="header">
@@ -553,10 +559,7 @@ body {
 											src="https://iili.io/HyiOB24.th.png" id="wish"><span
 											id="wish_span_count"></span>
 											<p id="wish_name">Wishlist</p> </a></li>
-									<li class="hero_list11"><a
-										href="<%= request.getContextPath()%>/my_orders"> <img
-											src="https://iili.io/HyiOUnn.md.png" id="order_del">
-											<p>Orders</p></a></li>
+									
 									<li class="hero_list11" id="cart_icon"><a
 										href="<%= request.getContextPath()%>/add_to_cart"><img
 											src="https://iili.io/HyiOQuS.md.png" id="cart"><span
