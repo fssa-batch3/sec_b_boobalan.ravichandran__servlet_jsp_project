@@ -328,28 +328,7 @@ font-family: 'Neuton', serif;
 
 	<script src="<%=request.getContextPath()%>/javascript/search.js"> </script>
 	<script>
-	async function fetchData() {
-		  const url = 'https://crops.p.rapidapi.com/?commonName=Trigo&specieName=Triticum&category=Cereales%20de%20grano&subcategory=De%20invierno&fruitType=cariopsis&family=Poaceae&cropCycle=anual&consistency=herb%C3%A1cea';
-		  const options = {
-		    method: 'GET',
-		    headers: {
-		      'X-RapidAPI-Key': '9e95e4d8c4msheccbdbac1ad9b6ep1d343cjsn58c3dcf67c50',
-		      'X-RapidAPI-Host': 'crops.p.rapidapi.com'
-		    }
-		  };
-
-		  try {
-		    const response = await fetch(url, options);
-		    const result = await response.text();
-		    console.log("Agri",result);
-		  } catch (error) {
-		    console.error(error);
-		  }
-		}
-
-		// Call the async function to fetch data
-		fetchData();
-
+	
 
 	let slideIndex = 0;
 	let timeoutID;
