@@ -76,6 +76,7 @@ min-height:20vw;
 padding:2.5vh 3vw;
 margin: 2.5vh auto;
 border-radius: 10px;
+min-height:20vh;
 box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 .description_details h3{
@@ -137,11 +138,11 @@ padding: 1.5vh 3vw;
 				</div>
 				<div class="pro_details">
 					<label>Price:</label>
-					<p><%=product.getPrice()%></p>
+					<p>&#8377;<%=product.getPrice()%></p>
 				</div>
 				<div class="pro_details">
 					<label>Discount:</label>
-					<p><%=product.getDiscount()%></p>
+					<p>&#8377;<%=product.getDiscount()%></p>
 				</div>
 			</div>
 		</div>

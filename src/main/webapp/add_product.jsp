@@ -1,3 +1,4 @@
+<%@page import="in.fssa.fertagriboomi.model.Product"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -5,6 +6,11 @@
 <html>
 <head>
 <meta charset="SO-8859-1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+	rel="stylesheet">
 <title>Add New Product</title>
 <style>
 /* Reset some default styles */
@@ -15,7 +21,7 @@ body, h1 {
 
 /* Global styles */
 body {
-    font-family: Arial, sans-serif;
+  
     background-color: #f4f4f4;
     color: #333;
 }
@@ -29,8 +35,8 @@ h1 {
 
 /* Form container */
 form {
-    max-width: 500px;
-    margin: auto;
+    max-width: 40vw;;
+    margin:2vh auto;
     background-color: #fff;
     padding: 30px 50px 30px 30px;
     border-radius: 5px;
@@ -67,7 +73,7 @@ textarea {
 
 /* Form submit button */
 button[type="submit"] {
-    width: 31vw;
+  width:100%;
     padding: 1.5vh 3vw;
     background-color: rgb(0, 87, 81);
     color:white;
@@ -108,9 +114,11 @@ color:red;
 </style>
 </head>
 <body>
+<jsp:include page="/admin_header.jsp"></jsp:include>
 	<h1>Add New Product</h1>
 	<%
 	String errorMessage = (String) request.getAttribute("ERRORDETAILS");
+	Product product = (Product) request.getAttribute("PRODUCT_DETAILS");
 	%>
 	<%
 	if (errorMessage != null) {
@@ -123,11 +131,11 @@ color:red;
 	%>
 <form action="create" method="post" id="productForm">
         <label>Product Name:</label>
-        <input type="text" name="name" required="true"  autofocus>
+        <input type="text" name="name" value="<%= (product != null) ? product.getName() : "" %>" required="true"  autofocus>
      
 
         <label>Product Weight:</label>
-        <input type="text" name="product_weight" id="weight"required="true">
+        <input type="text" name="product_weight" id="weight"  value="<%= (product != null) ? product.getProductWeight() : "" %>"required="true">
         <div class="error_div1"></div>
 
         <label for="product_category">Product Category:</label>
@@ -156,33 +164,33 @@ color:red;
         <div class="error_div"></div>
 
         <label>Description:</label>
-        <textarea name="description" rows="4" required="true"></textarea>
+        <textarea name="description" rows="4"  required><%= (product != null) ? product.getDescription() : "" %> </textarea>
      
 
         <label>Benefits:</label>
-        <textarea name="benefits" rows="4" required="true"></textarea>
+        <textarea name="benefits" rows="4"  required><%= (product != null) ? product.getBenefits() : "" %></textarea>
         
 
         <label>Application:</label>
-        <textarea name="application" rows="4" required="true"></textarea>
+        <textarea name="application"  rows="4" required><%= (product != null) ? product.getApplication() : "" %></textarea>
         
 
         <label>Manufacture:</label>
-        <input type="text" name="manufacture" required>
+        <input type="text" name="manufacture"  value="<%= (product != null) ? product.getManufacture() : "" %>" required>
         
        <label>Stock Count:</label>
-        <input type="number" id="myNumberInput" name="stock_count" required pattern="[0-9]+" min="1">
+        <input type="number" id="myNumberInput" name="stock_count" value="<%= (product != null) ? product.getStockCount() : "" %>" required pattern="[0-9]+" min="1">
 
         <label>Price:</label>
-        <input type="text" name="price" id="custom-number-input" required pattern="[0-9]+" min="1">
+        <input type="text" name="price" id="custom-number-input" value="<%= (product != null) ? product.getPrice() : "" %>" required pattern="[0-9]+" min="1">
         <div class="error_div2"></div>
 
         <label>Discount:</label>
-        <input type="text" name="discount" id="custom-discount-input" required pattern="[0-9]+" min="1">
+        <input type="text" name="discount" id="custom-discount-input" value="<%= (product != null) ? product.getDiscount() : "" %>" required pattern="[0-9]+" min="1">
         <div class="error_div3"></div>
 
         <label>Image URL:</label>
-        <input type="url" name="image_url" id="custom-valid-input" required>
+        <input type="url" name="image_url" id="custom-valid-input" value="<%= (product != null) ? product.getImageURL() : "" %>"  required>
         <input type="hidden" id="custom-image-input">
         
         <button type="submit">Submit</button>

@@ -43,14 +43,20 @@ public class AllProductsServlet extends HttpServlet {
 			
 			String responseJson = gson.toJson(res);
 			response.setContentType("application/json");
+			response.setStatus(HttpServletResponse.SC_OK);
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(responseJson);
+			
+			
+			
 //			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 //			dispatcher.forward(request, response);
 		} catch (ServiceException e) {
 
 			e.printStackTrace();
-			throw new ServletException(e);
+			String error = e.getMessage();
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			response.getWriter().write(error);
 		}
 
 	}

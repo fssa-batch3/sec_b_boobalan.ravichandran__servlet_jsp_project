@@ -110,6 +110,11 @@ margin-top:4vh;
 width:22vw;
 height:30vh;
 }
+
+#rem1 {
+width:31.5vw;
+
+}
 </style>
 </head>
 <body>
@@ -173,7 +178,7 @@ height:30vh;
 				</div>
 				<div class="fert5">
 					<h3>
-						Weight: <span id="product_weight">200ml</span>
+						Weight: <span id="product_weight"><%=product.getProductWeight() %></span>
 					</h3>
 				</div>
                 
@@ -481,7 +486,7 @@ button.addEventListener("click", function wishListAction(event) {
     this.classList.toggle("fa-solid");
     this.classList.toggle("true");
     this.classList.toggle("active");
-    this.style.color = "rgb(7, 14, 88)";
+    this.style.color = "rgb(255, 0, 68)";
 
     const wishlisstItem =
         JSON.parse(localStorage.getItem("wishlisstItem")) || [];
@@ -567,7 +572,7 @@ function checkWishlistStatus() {
         button.classList.add("fa-solid");
         button.classList.add("true");
         button.classList.add("active");
-        button.style.color = "rgb(7, 14, 88)";
+        button.style.color = "rgb(255, 0, 68)";
     } else {
         // Product is not in the wishlist
         button.classList.remove("fa-solid");
@@ -590,6 +595,25 @@ window.addEventListener("load", function() {
         button.style.color = "rgb(198, 198, 198)";
 <% }%>
 
+
+//Function to initialize the button text
+function initializeButtonText() {
+	const loginUserDetails = '<%=loggedUserUniqueEmail%>';
+  const addToCartItem = JSON.parse(localStorage.getItem("addToCartItem")) || [];
+  const addProductId = '<%= product.getId() %>';
+  const addToCartButton = document.getElementById("rem1");
+
+  const productExists = addToCartItem.some(
+    (data) =>
+      data.cart_id === addProductId && data.userUniqueId === loginUserDetails
+  );
+
+  // Set the initial button text based on whether the product is in the cart
+  addToCartButton.innerText = productExists ? "GO TO CART" : "ADD TO CART";
+}
+
+// Call the function to initialize the button text when the page loads
+initializeButtonText();
 function addToCart() {
 	  <% if (loggedUserUniqueEmail != null) { %>
 	    const logedUserDetails = '<%= loggedUserUniqueEmail %>';

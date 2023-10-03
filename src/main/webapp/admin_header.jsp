@@ -28,14 +28,15 @@ font-weight:bold;
 }
 .create-product a button{
 padding:1vh 2.5vw;
- background-color: #176047;
+ background-color: rgb(13, 115, 218);
  border: none;
  color:white;
  border-radius:5px;
  font-size:16px;
+ cursor:pointer;
 }
 .create-product a button:hover{
- background-color: #3aa37e;
+
  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
  }
  .banner{
@@ -53,6 +54,7 @@ padding:1vh 2.5vw;
 							alt="logo for fert agri boomi" class="admin-logo" /></a>
 <div class="create-product">
 <a href="get_all_products_admin">Products</a>
+<a href="<%= request.getContextPath()%>/all_orders"> Orders</a>
 <a href="<%= request.getContextPath()%>/logout"> Logout</a>
 <a href="<%= request.getContextPath()%>/product/new"><button>Create New Product</button></a>
 

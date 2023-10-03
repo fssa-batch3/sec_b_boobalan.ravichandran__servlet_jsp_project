@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="in.fssa.fertagriboomi.service.ReviewsAndRatingsService"%>
 <%@page import="in.fssa.fertagriboomi.model.Orders"%>
 <%@page import="in.fssa.fertagriboomi.model.DeliveryAddresses"%>
@@ -127,6 +128,9 @@
 
 .address-details-continer {
 	margin-top: 5vh;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+	padding:5vh 5vw 10vh 0;
+	border-radius:15px;
 }
 
 .address-details .ordate {
@@ -138,19 +142,19 @@
 }
 
 .address-details .street {
-	margin-left: 8.7vw;
+	margin-left: 2.3vw;
 }
 
 .address-details .local {
-	margin-left: 10.7vw;
+	margin-left: 10.5vw;
 }
 
 .address-details .city {
-	margin-left: 13.8vw;
+	margin-left: 13.1vw;
 }
 
 .address-details .pincode {
-	margin-left: 11.1vw;
+	margin-left: 10.8vw;
 }
 
 .address-details .state {
@@ -158,15 +162,15 @@
 }
 
 .address-details .name {
-	margin-left: 5.4vw;
+	margin-left: 5.9vw;
 }
 
 .address-details .state {
-	margin-left: 13.1vw;
+	margin-left: 12.4vw;
 }
 
 .address-details .mobile {
-	margin-left: 5.8vw;
+	margin-left: 6.1vw;
 }
 
 .address-details .status {
@@ -198,8 +202,8 @@ border-radius:5px;
 
 }
 .cancel-order{
-margin-left:10vw;
-margin-top:-5vh;
+margin-left:15vw;
+margin-top:-6vh;
 margin-bottom:10vh;
 }
 .cancel-order a{
@@ -219,7 +223,28 @@ box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 .order_container a{
 text-decoration: none;
 }
+.quantity-div{
+display:flex;
+padding-left:2.5vw;
 
+padding-bottom:1vh;
+}
+.quantity-div p{
+margin-left:.7vw;
+margin-top:.2vh;
+color:orangered;
+font-weight:bold;
+}
+.quantity-div h2{
+font-size:19px;
+}
+.address-details h2{
+font-size:20px;
+}
+.address-details h3{
+font-size:18px;
+   color:rgb(0, 0, 147);
+}
 </style>
 </head>
 <body>
@@ -267,6 +292,10 @@ Orders order = (Orders) request.getAttribute("ORDERS");
                 <del>
                     &#8377;<%=orders.getDiscount()%></del>
             </div>
+            <div class="quantity-div">
+                <h2>Quantity: </h2><p><%=orders.getQuantity() %></p>
+                
+            </div>
          
         </div>
            <%
@@ -302,10 +331,11 @@ Orders order = (Orders) request.getAttribute("ORDERS");
         </h2>
     </div>
     <%
-    java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("dd/MM/yyyy");
+	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mma");
+	SimpleDateFormat dateFormat1 = new SimpleDateFormat("dd/MM/yyyy");
 
-    String orderDateStr = formatter.format(orderdate);
-    String deliveryDateStr = formatter.format(deliveryDate);
+    String orderDateStr = dateFormat.format(orderdate);
+    String deliveryDateStr = dateFormat1.format(deliveryDate);
 
     java.util.Date currentDate = new java.util.Date();
 
@@ -338,7 +368,7 @@ Orders order = (Orders) request.getAttribute("ORDERS");
             </div>
 
             <div class="address-details">
-                <h2>Steet Name:</h2>
+                <h2>D/No and Steet Name:</h2>
                 <h3 class="street"><%=address.getStreetName()%>,
                 </h3>
             </div>

@@ -10,6 +10,11 @@
 margin-right:7vw;
 margin-left:4vw;
 }
+.off4{
+    margin-left: 60px;
+    margin-top: 10px;
+    width:5vw;
+}
 
 </style>
 	<div class="user_header">
@@ -98,6 +103,7 @@ margin-left:4vw;
 						href="<%= request.getContextPath()%>/products?category_id=20">MICRO NURIENTS</a>
 				</div>
 			</div>
+			<div id="google_translate_element"></div>
 		</div>
 	</div>
 	<%
@@ -520,6 +526,7 @@ body {
 .all_nave_links{
 margin-left:4vw;
 }
+
 </style>
 		<div class="user_header">
 			<div class="header">
@@ -611,6 +618,7 @@ margin-left:4vw;
 							href="<%= request.getContextPath()%>/products?category_id=20">MICRO NURIENTS</a>
 					</div>
 				</div>
+				<div id="google_translate_element"></div>
 			</div>
 		</div>
 	

@@ -10,6 +10,10 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
 	rel="stylesheet">
+<script
+	src="
+		https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js
+		"></script>
 <title>User Login</title>
 <style>
 * {
@@ -226,15 +230,21 @@ body {
 					</div>
 				</form>
 			</div>
+
 			<%
-			String errorMessage = request.getParameter("error");
+			String err = request.getParameter("error");
 			%>
 			<%
-			if (errorMessage != null) {
+			if (err != null) {
 			%>
-			<div class="error_div">
-				<p><%=errorMessage%></p>
-			</div>
+			<script>
+					    // Display a Swal alert when the 'err' parameter is not null
+					    Swal.fire({
+					        icon: 'error',
+					        title: 'Error',
+					        text: '<%=err%>'
+					    });
+					</script>
 			<%
 			}
 			%>

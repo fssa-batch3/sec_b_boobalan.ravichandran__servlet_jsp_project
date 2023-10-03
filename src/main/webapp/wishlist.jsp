@@ -180,6 +180,49 @@ main{
 }
 }
 
+/* CSS for the loading spinner */
+  .loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   background-color: rgba(255, 255, 255, 0.973);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid rgb(0, 118, 85);
+      border-bottom: 16px solid  rgb(0, 118, 85);
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+    }
+
+
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+.loading{
+margin-top:20vh;
+margin-left:-5.6vw;
+color: rgb(0, 104, 195);
+font-style: italic;
+font-weight:300;
+}
+
 </style>
 </head>
 <body>
@@ -189,6 +232,14 @@ main{
 		String loggedUserUniqueEmail = (String) request.getSession().getAttribute("LOGGEDUSER");
 		%>
 
+    <!-- spinner -->
+    
+  <div class="loader-container" id="loader-container">
+    <div class="loader"></div>
+ 
+    <h2 class="loading">Loading</h2>
+  </div>
+  
 		<img id="empty-wishlist"
 			src="https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-2130356-1800917.png"
 			alt="wishlist image">
@@ -203,6 +254,19 @@ main{
 		<script src="<%= request.getContextPath()%>/javascript/search.js"> </script>
 		
 	<script type="text/javascript">
+
+	//JavaScript to hide the loading spinner after 3 seconds
+	document.addEventListener('DOMContentLoaded', function () {
+	  // Get the loading spinner element
+	   const loaderContainer = document.getElementById('loader-container');
+	  
+	  // Hide the loading spinner after 3 seconds (3000 milliseconds)
+	  setTimeout(function () {
+	      loaderContainer.style.display = 'none';
+	    }, 1000);
+	});
+	
+	
 	
 	let logedUser;
 
@@ -217,21 +281,18 @@ main{
 	            method: "GET",
 	        });
 
-	        if (!response.ok) {
-	            throw new Error(`HTTP error! Status: ${response.status}`);
-	        }
-
+	        if (response.ok) {
 	        const responseData = await response.json();
-
 	        // Access the array of products from the 'data' property
 	        allProducts = responseData.data;
-
-	        // Now, 'allProducts' contains the array of product data
-	        //console.log(allProducts);
-	       // console.log("wishListProduct", wishListProduct);
-	        logedUser = '<%=loggedUserUniqueEmail%>';
-	       // console.log("loggedUserUniqueEmail", logedUser);
 	        
+	        }else{
+				  const responseData = await response.text();
+				alert( responseData );
+			}
+	        
+	        // Now, 'allProducts' contains the array of product data
+	        logedUser = '<%=loggedUserUniqueEmail%>';
 	        
 	        const findLogedUserWishlist = wishListProduct.filter(
 	        		  (details) => details.userUniqueId === logedUser
@@ -246,8 +307,8 @@ main{
 
 
 	        // Log matched products inside the .then() block
-	        console.log("matchedProducts:", matchedProducts);
-	        console.log("findLogedUserWishlist:", findLogedUserWishlist);
+	        //console.log("matchedProducts:", matchedProducts);
+	        //console.log("findLogedUserWishlist:", findLogedUserWishlist);
 	        
 	        // Example: Logging product names
 	        matchedProducts.forEach(product => {

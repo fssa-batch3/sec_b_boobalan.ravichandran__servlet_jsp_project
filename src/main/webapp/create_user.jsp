@@ -12,52 +12,81 @@
 	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="../css/create_user.css">
+<script src="
+		https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js
+		"></script>
 <title>create account</title>
+<style>
+.singup {
+	font-size: 20px;
+	margin-top:6vh;
+	
+}
+.form {
+	
+	width:32vw;
+	min-height: 350px;
+	
+}
 
+.singup a {
+	font-size: 18px;
+	text-decoration: none;
+	color: #08499e;
+	padding-left: 5px;
+}
+
+.singup a:hover {
+	color: rgb(255, 0, 93);
+}
+.register-container{
+display:flex;
+}
+.sign-up img{
+width:50vw;
+height:80vh;
+margin-top:6vh;
+}
+
+</style>
 </head>
 <body>
 
-<%User user = (User)  request.getAttribute("USER_DETAILS");
+<% User user = (User)request.getAttribute("USER_DETAILS"); %>
+<div class="register-container">
+<div class="sign-up">
+ <img src="https://iili.io/JJYU7Pn.png" alt="signup" >
+</div>
+<div class="box">
+    <form class="form" action="create" method="post">
+        <a href="../index"> <img src="https://iili.io/Hyihp7S.md.png"
+            alt="logo for fert agri boomi" class="logo_img" /></a>
+        <h1>Create Your Account</h1>
+        <div class="form-group">
+            <input type="text" class="form-control" value="<%= (user != null) ? user.getPhoneNumber() : "" %>"
+                id="mobile" required="true" name="phone"
+                title="Enter 10 number only" maxlength="10" autofocus>
+            <label for="mobile" class="form-label"> Mobile Number </label>
+        </div>
 
-%>
+        <div class="form-group form-group1">
+            <input type="email" class="form-control" value="<%= (user != null) ? user.getEmail() : "" %>"
+                id="email" required name="email">
+            <label for="email" class="form-label">Email address</label>
+        </div>
 
+        <div class="form-group form-group2">
+            <input type="text" class="form-control" id="full_name"
+                value="<%= (user != null) ? user.getName() : "" %>" required="true" name="name">
+            <label for="full_name" class="form-label">Enter Your Name</label>
+        </div>
 
-
-	<div class="box">
-		<form class="form" action="create" method="post">
-			<a href="../index"> <img src="https://iili.io/Hyihp7S.md.png"
-				alt="logo for fert agri boomi" class="logo_img" /></a>
-			<h1>Create Your Account</h1>
-			<div class="form-group">
-
-				<input type="text" class="form-control" value="<%=(user != null) ? user.getPhoneNumber() : ""%>"
-					id="mobile" required="true" name="phone"
-					title="Enter 10 number only" maxlength="10"  autofocus> <label
-					for="mobile" class="form-label"> Mobile Number </label>
-			</div>
-
-			<div class="form-group form-group1">
-				<input type="email" class="form-control" value="<%=(user != null) ? user.getEmail() : ""%>"
-					id="email" required name="email"> <label for="email"
-					class="form-label">Email address</label>
-			</div>
-
-			<div class="form-group form-group2">
-
-				<input type="text" class="form-control" id="full_name"
-					value="<%=(user != null) ? user.getName() : ""%>" required="true" name="name"> <label
-					for="full_name" class="form-label">Enter Your Name</label>
-			</div>
-
-
-
-			<div class="form-group form-group3">
-				<input type="password" class="form-control" value="<%=(user != null) ? user.getPassword() : ""%>"
-					id="txtPassword" name="password" required="true"> <label
-					for="txtPassword" class="form-label">Set Password</label>
-
-			</div>
-			<div class="password_valid">
+        <div class="form-group form-group3">
+            <input type="password" class="form-control" value="<%= (user != null) ? user.getPassword() : "" %>"
+                id="txtPassword" name="password" required="true">
+            <label for="txtPassword" class="form-label">Set Password</label>
+        </div>
+       <div class="password_valid">
 				<label class="create_lable"> <input type="checkbox"
 					id="chkUppercase" disabled> Have at 1 Uppercase letter
 				</label>
@@ -83,32 +112,43 @@
 				</label>
 			</div>
 
+        <div class="form-group">
+            <label class="showLabel"> <input type="checkbox" id="show">
+                Show Password
+            </label>
+        </div>
+        
+     
+        <div class="btn1">
+            <button type="submit" id="userSignUp">Register</button>
+        </div>
+        
+           <h4 class="singup">
+							Already Registered In FAB?<a href="../login">Login</a>
+						</h4>
+    </form>
+</div>
 
 
-			<div class="form-group">
-				<label class="showLabel"> <input type="checkbox" id="show">
-					Show Password
-				</label>
-			</div>
-			<div class="btn1">
-				<button type="submit" id="userSignUp">Register</button>
-			</div>
-		</form>
-	</div>
+</div>
 
 	<%
-	String errorMessage = request.getParameter("error");
+	String err = (String) request.getAttribute("ERROR");
 	%>
 	<%
-	if (errorMessage != null) {
+	if (err != null) {
 	%>
-	<div class="error_div">
-		<p><%=errorMessage%></p>
-	</div>
+	<script>
+					    // Display a Swal alert when the 'err' parameter is not null
+					    Swal.fire({
+					        icon: 'error',
+					        title: 'Error',
+					        text: '<%=err%>'
+					    });
+					</script>
 	<%
 	}
 	%>
-
 
 	<script>
         const passwordInput = document.getElementById("txtPassword");

@@ -1,6 +1,8 @@
 package in.fssa.fertagriboomi.servlets;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,35 +26,38 @@ public class CreateUserServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		User user = new User();
+	        throws ServletException, IOException {
+	    User user = new User();
 
-		
-	
-		UserService userService = new UserService();
-		try {
-			String name = request.getParameter("name");
-			String email = request.getParameter("email");
-			String password = request.getParameter("password");
-			long phoneNumber = Long.parseLong(request.getParameter("phone"));
+	    String name = request.getParameter("name");
+	    String email = request.getParameter("email");
+	    String password = request.getParameter("password");
+	    String phoneParam = request.getParameter("phone");
 
-			user.setName(name);
-			user.setEmail(email);
-			user.setPassword(password);
-			
-			user.setPhoneNumber(phoneNumber);
-		
-			userService.createUser(user);
-			System.out.println("User register successfully");
-			response.sendRedirect(request.getContextPath() + "/login");
-		} catch (ServiceException | ValidationException e) {
-//			e.printStackTrace();
-//			throw new ServletException(e);
-			String getError = e.getMessage();
-			request.setAttribute("USER_DETAILS", user);
-			response.sendRedirect("register?error=" + getError);
-		}
+	    try {
+	        long phoneNumber = Long.parseLong(phoneParam);
 
+	        user.setName(name);
+	        user.setEmail(email);
+	        user.setPassword(password);
+	        user.setPhoneNumber(phoneNumber);
+
+	        UserService userService = new UserService();
+	        userService.createUser(user);
+	        System.out.println("User registered successfully");
+	        response.sendRedirect(request.getContextPath() + "/login");
+	    } catch (NumberFormatException | ServiceException | ValidationException e) {
+	        String getError = e.getMessage();
+	      
+	        request.setAttribute("USER_DETAILS", user);
+	        //System.out.println("USER_DETAILS attribute: " + user);
+	        request.setAttribute("ERROR", getError);
+	     
+	        RequestDispatcher rd = request.getRequestDispatcher("/create_user.jsp");
+	        rd.forward(request, response);
+	    }
 	}
+
+	
 
 }

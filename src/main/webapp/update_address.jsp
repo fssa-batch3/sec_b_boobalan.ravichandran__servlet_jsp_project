@@ -11,6 +11,10 @@
 	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
 	rel="stylesheet">
 <link rel="icon" type="image/x-icon" href="https://iili.io/J9HTxWb.png">
+<script
+	src="
+		https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js
+		"></script>
 <title>edit address</title>
 <style type="text/css">
 * {
@@ -105,12 +109,9 @@ color:red;
 	<main>
 		<%
 		DeliveryAddresses addressDetails = (DeliveryAddresses) request.getAttribute("UPDATE_ADDRESS");
-		String errorDetails = (String) request.getAttribute("ERROR_DETAILS");
 		%>
 		
-		<%if(errorDetails !=null){ %>
-		<h1></h1>
-		<%} %>
+	
 		<% if (addressDetails != null) {
 		%>
 		<form action="update_address" method="post">
@@ -319,6 +320,29 @@ color:red;
 		</form>
 		
 		<%} %>
+		
+						</h4>
+					</div>
+				</form>
+			</div>
+
+			<%
+			String err = (String) request.getAttribute("ERROR_DETAILS");
+			%>
+			<%
+			if (err != null) {
+			%>
+			<script>
+					    // Display a Swal alert when the 'err' parameter is not null
+					    Swal.fire({
+					        icon: 'error',
+					        title: 'Error',
+					        text: '<%=err%>'
+					    });
+					</script>
+			<%
+			}
+			%>
 	</main>
 	<script>
 
@@ -397,6 +421,9 @@ color:red;
         });
     });
 <%}%>
+
+
+
 	</script>
 </body>
 </html>

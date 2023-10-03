@@ -20,6 +20,12 @@
 	href="<%=request.getContextPath()%>/css/style.css">
 <title>Ordered Successfully</title>
 <style type="text/css">
+
+    ::selection {
+      background-color: rgb(218, 255, 218); * Change this to your desired color */
+      color: black; /* Change this to your desired text color */
+    }
+
 * {
   font-family: 'Neuton', serif;
     letter-spacing: .3px;
@@ -30,7 +36,7 @@ main {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 30px 50px 100px 50px;
+	padding: 30px 50px 15vh 50px;
 }
 
 .thank h1 {
@@ -52,7 +58,7 @@ main {
 .thank img {
 	width: 500px;
 	height: 370px;
-	margin-left: 5vw;
+	margin-left: 2vw;
 }
 
 .thank h3, .thank h2 {
@@ -61,13 +67,13 @@ main {
 }
 
 .thank h3 {
-	padding-left: 150px;
+	padding-left: 130px;
 	padding-bottom: 10px;
 	color: rgb(5, 85, 66);
 }
 
 .thank h2 {
-	padding-left: 200px;
+	padding-left: 150px;
 	color: rgb(22, 42, 6);
 }
 .thank_content{
@@ -104,21 +110,14 @@ margin-top:-5vh;
 			<script src="<%=request.getContextPath()%>/javascript/search.js"> </script>
 		
 	<script>
-	 // removing the data associated with the "addToCartItem" key
-
-	  const logedUser = '<%=loggedUserUniqueEmail %>';
-	  let addToCartItem = JSON.parse(localStorage.getItem("addToCartItem")) || [];
-
-	  // Filter out the items that match the logedUser details
-	  addToCartItem = addToCartItem.filter(
-	    (item) => item.userUniqueId !== logedUser
-	  );
+	
+	if (!sessionStorage.getItem('refreshed')) {
+		  sessionStorage.setItem('refreshed', true);
+		  location.reload();
+		}
 
 
-	  // Update the addToCartItem array in local storage with the new array
-	  localStorage.setItem("addToCartItem", JSON.stringify(addToCartItem));
- 
-	 
+
 	    </script>
 </body>
 </html>

@@ -20,7 +20,11 @@
   box-sizing: border-box;
   font-family: 'Lora', serif;
  
-  }</style>
+  }
+  .today {
+  margin:4vh 2.3vw;
+  }
+  </style>
 </head>
 <body>
 	<jsp:include page="/admin_header.jsp"></jsp:include>

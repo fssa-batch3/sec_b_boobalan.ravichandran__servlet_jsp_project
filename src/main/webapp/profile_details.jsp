@@ -12,17 +12,28 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Neuton:ital,wght@0,200;0,300;1,400&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Neuton:ital,wght@0,200;0,300;1,400&display=swap"
+	rel="stylesheet">
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Profile Details</title>
 <link rel="icon" type="image/x-icon" href="https://iili.io/J9HTxWb.png">
-<link rel="stylesheet" href="./css/header.css">
-<link rel="stylesheet" href="./css/user_profile.css">
-<link rel="stylesheet" href="<%= request.getContextPath()%>/css/style.css">
-
-<link rel="stylesheet" href="<%= request.getContextPath()%>/css/footer.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/header.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/user_profile.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style.css">
+<script
+	src="
+		https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js
+		"></script>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/footer.css">
+<link rel="stylesheet"
+	href="https://sweetalert2.github.io/styles/bootstrap4-buttons.css">
 <style>
 main {
 	background-color: hsl(216, 100%, 99%);
@@ -105,6 +116,7 @@ main {
 .edit-remove {
 	display: flex;
 	border-top: 1.5px solid rgb(179, 179, 179);
+	justify-content: space-around;
 }
 
 .edit-remove a {
@@ -124,7 +136,7 @@ main {
 	border-right: 1px solid rgb(194, 194, 194);
 }
 
-#address-remove {
+.edit-remove button {
 	padding: 8px 30px;
 	margin-left: 15px;
 	cursor: pointer;
@@ -133,14 +145,13 @@ main {
 	font-size: 16px;
 }
 
-#address-remove:hover, #address-edit:hover {
+.address-remove:hover, #address-edit:hover {
 	color: #176047;
 	font-weight: bold;
 }
 
 .add-new-address {
 	width: 18vw;
-
 	border-radius: 5px;
 	color: rgb(255, 255, 255);
 	border: 1.5px solid rgb(173, 173, 173);
@@ -149,12 +160,14 @@ main {
 	margin-top: 20px;
 	background-color: #176047;
 }
-.add-new-address a{
-color: rgb(255, 255, 255);
-text-decoration:none;
+
+.add-new-address a {
+	color: rgb(255, 255, 255);
+	text-decoration: none;
 }
+
 .add-new-address h3 {
-padding: 12px 20px 7px 40px;
+	padding: 12px 20px 7px 40px;
 	display: flex;
 	font-weight: normal;
 	font-size: 15px !important;
@@ -168,12 +181,12 @@ padding: 12px 20px 7px 40px;
 
 .add-new-address h3:hover {
 	font-weight: bold;
-	color:#176047;
+	color: #176047;
 }
 
 .add-new-address:hover {
 	background-color: #ffffff;
-	color:#176047;
+	color: #176047;
 	border: 1.5px solid #176047;
 	font-weight: bold;
 }
@@ -292,11 +305,11 @@ main{
 .fulledit {
 	background-color: #ffffff;
 	width: 30vw;
-	height: 44vw;
+	height: 36vw;
 	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
 		rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 	position: absolute;
-	top: 13%;
+	top: 18%;
 	border-radius: 5px;
 	left: 35%;
 }
@@ -374,17 +387,19 @@ main{
 		6px;
 }
 
-.password-container-class input[type="password"], .password-container-class input[type="text"] {
-
+.password-container-class input[type="password"],
+	.password-container-class input[type="text"] {
 	margin-bottom: 20px;
 }
-.password-toggle{
-cursor:pointer;
-border:1px solid black;
-padding:5px 20px;
+
+.password-toggle {
+	cursor: pointer;
+	border: 1px solid black;
+	padding: 5px 20px;
 }
-input[type="email"]{
-background-color: rgb(213, 213, 213);
+
+input[type="email"] {
+	background-color: rgb(213, 213, 213);
 }
 
 /* -------==============/ @media start/=-============---------------- */
@@ -492,7 +507,7 @@ background-color: rgb(213, 213, 213);
 	}
 	.button button:hover {
 		background-color: rgb(3, 140, 53);
-		color:rgb(5, 83, 33);
+		color: rgb(5, 83, 33);
 		box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 	}
 	footer {
@@ -501,37 +516,46 @@ background-color: rgb(213, 213, 213);
 }
 
 .logout-class a, .my-orders-class a {
-display:flex;
-text-decoration:none;
-color:white;
-font-weight:bold;
+	display: flex;
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	font-size: 19px;
+}
 
-font-size:19px;
+.logout-class a p, .my-orders-class a p {
+	margin: 1vh 0 0 1.5vw;
+}
 
+.logout-class, .my-orders-class {
+	padding: 2.5vh 3vw;
+	background-color: #176047;
 }
-.logout-class a p, .my-orders-class a p{
-margin:1vh 0 0 1.5vw;
-}
-.logout-class, .my-orders-class{
-padding:2.5vh 3vw;
-  background-color: #176047;
-}
-.logout-class:hover, .my-orders-class:hover{
- background-color: #18a473;
-}
-.logout-class{
-border-top:2px solid white;
-border-bottom:2px solid white;
-}
-.logout-class a img{
-width:3vw;
-height:4.5vh;
 
+.logout-class:hover, .my-orders-class:hover {
+	background-color: #18a473;
 }
-.my-orders-class a img{
-width:3vw;
-height:4.5vh;
-} 
+
+.logout-class {
+	border-top: 2px solid white;
+	border-bottom: 2px solid white;
+}
+
+.logout-class a img {
+	width: 3vw;
+	height: 4.5vh;
+}
+
+.my-orders-class a img {
+	width: 3vw;
+	height: 4.5vh;
+}
+
+.error {
+	width: 30vw;
+	margin-top: 1vh;
+	color: red;
+}
 </style>
 </head>
 
@@ -539,7 +563,7 @@ height:4.5vh;
 
 
 	<jsp:include page="/header.jsp"></jsp:include>
-	
+
 	<%
 	User userDetails = (User) request.getAttribute("USERDETAILS");
 	List<DeliveryAddresses> addressList = (List<DeliveryAddresses>) request.getAttribute("ADDRESS_LIST");
@@ -548,14 +572,17 @@ height:4.5vh;
 	<main>
 		<div class="user-profile-details">
 			<div class="address-container">
-               <div>
-               <div class="my-orders-class">
-               <a href="<%= request.getContextPath()%>/my_orders"><img src="https://iili.io/JJuYZue.png"><p>My Orders</p></a>
-               </div>
-               <div class="logout-class">
-                <a href="logout"><img src="https://iili.io/JJuI9x2.png"><p>Logout</p></a>
-               </div>
-               </div>
+				<div>
+					<div class="my-orders-class">
+						<a href="<%=request.getContextPath()%>/my_orders"><img
+							src="https://iili.io/JJuYZue.png">
+							<p>My Orders</p></a>
+					</div>
+					<div class="logout-class">
+						<a href="logout"><img src="https://iili.io/JJuI9x2.png">
+							<p>Logout</p></a>
+					</div>
+				</div>
 				<div class="address-title">
 					<h2>Manage Addresses</h2>
 				</div>
@@ -590,10 +617,12 @@ height:4.5vh;
 						</div>
 						<div class="edit-remove">
 							<a
-								href="<%=request.getContextPath()%>/profile_details/edit_address?address_id=<%=address.getId()%> ">
+								href="<%=request.getContextPath()%>/profile_details/edit_address?address_id=<%=address.getId()%>">
 								<p id="address-edit">EDIT</p>
 							</a>
-							<a href="<%=request.getContextPath()%>/profile_details/delete_address?address_id=<%=address.getId()%> "><button id="address-remove" data_set="<%=address.getId()%>">REMOVE</button></a>
+							<!-- Modify the REMOVE button to trigger Swal -->
+							<button class="address-remove"
+								data-address-id="<%=address.getId()%>">REMOVE</button>
 						</div>
 					</div>
 					<%
@@ -605,10 +634,11 @@ height:4.5vh;
 
 				<div class="add-address-container">
 					<div class="add-new-address">
-						<a href="<%=request.getContextPath()%>/profile_details/new_address"><h3>
-							<p>+</p>
-							ADD A NEW ADDRESS
-						</h3></a>
+						<a
+							href="<%=request.getContextPath()%>/profile_details/new_address"><h3>
+								<p>+</p>
+								ADD A NEW ADDRESS
+							</h3></a>
 					</div>
 				</div>
 
@@ -644,7 +674,7 @@ height:4.5vh;
 					<div class="edit-profile">
 						<a href="#"><h3>UPDATE PROFILE</h3></a>
 					</div>
-					
+
 				</div>
 
 			</div>
@@ -653,7 +683,8 @@ height:4.5vh;
 
 	</main>
 
-	<form action="profile/update" method="post">
+	<form action="profile/update" method="post"
+		onsubmit="return validateForm()">
 		<div class="edit-profile-details">
 			<div class="fulledit">
 				<div class="exit-icon">
@@ -669,18 +700,20 @@ height:4.5vh;
 							id="edit-full_name" maxlength="30"
 							value="<%=userDetails.getName()%>" name="name" required>
 					</div>
+					<div class="error1"></div>
 					<div class="user-personal-details">
 						<label for="mobile">Phone Number:</label> <input type="text"
-							id="mobile" name="phone"
+							id="update-mobile" name="phone"
 							value="<%=userDetails.getPhoneNumber()%>" required
 							pattern="[0-9].{9}" title="Enter 10 number only" maxlength="10">
 					</div>
+					<div class="error"></div>
 					<div class="user-personal-details">
 						<label for="email">Email Address:</label> <input type="email"
 							id="phone" name="email" value="<%=userDetails.getEmail()%>"
 							readonly>
 					</div>
-					
+
 
 
 				</div>
@@ -690,26 +723,126 @@ height:4.5vh;
 			</div>
 		</div>
 	</form>
-	<jsp:include page="/footer.jsp"></jsp:include>
-	<script src="<%= request.getContextPath()%>/javascript/search.js"> </script>
-	
+	<%
+	String err = request.getParameter("ERROR_DETAILS");
+	%>
+	<%
+	if (err != null) {
+	%>
 	<script>
+					    // Display a Swal alert when the 'err' parameter is not null
+					    Swal.fire({
+					        icon: 'error',
+					        title: 'Error',
+					        text: '<%=err%>'
+					    });
+					</script>
+	<%
+	}
+	%>
 
- // edit profile button click
- const editPopPupShow = document.querySelector(".edit-profile-details")
- document.querySelector(".edit-profile").addEventListener("click", () => {
-   editPopPupShow.classList.add("open-message");
- });
 
- // close the poppup message
 
- document.querySelector(".close-profile-details").addEventListener("click", () => {
-   editPopPupShow.classList.remove("open-message");
- });
- 
- 
+	<jsp:include page="/footer.jsp"></jsp:include>
+	<script src="<%=request.getContextPath()%>/javascript/search.js"> </script>
+	<script>
+	
+	function showSwalConfirmation(callback) {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        });
 
-		
+        swalWithBootstrapButtons
+            .fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel',
+                reverseButtons: true
+            })
+            .then((result) => {
+                callback(result);
+            });
+    }
+
+    // Add an event listener to the REMOVE buttons
+    const removeButtons = document.querySelectorAll('.address-remove');
+    removeButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const addressId = this.getAttribute('data-address-id');
+            // Display Swal confirmation dialog and pass a callback function
+            showSwalConfirmation(function (result) {
+                if (result.isConfirmed) {
+                	 Swal.fire(
+               		      'Deleted!',
+               		      'Your address has been deleted.',
+               		      'success'
+               		    )
+               		setTimeout(function () {
+                    // If user confirms, proceed with address deletion
+                    window.location.href = "<%=request.getContextPath()%>/profile_details/delete_address?address_id="+addressId;
+               	     }, 2500);
+               		} else if (result.dismiss === Swal.DismissReason.cancel) {
+                    // If user cancels, show a message
+                    Swal.fire('Cancelled', 'Your address has not been deleted :)', 'error');
+                } else {
+                    // Handle other dismissals (e.g., close button)
+                    // You can add additional handling here if needed
+                }
+            });
+        });
+    });
+    
+    
+	const editPopUpShow = document.querySelector(".edit-profile-details");
+	function validateForm() {
+		   const mobileInput = document.getElementById("update-mobile");
+		   const nameInput = document.getElementById("edit-full_name");
+		   const errorMessage = document.querySelector(".error");
+		   const errorMessage1 = document.querySelector(".error1");
+
+		   // Validate mobile number
+		   const mobileValue = mobileInput.value.trim();
+		   const isMobileValid = /^[6-9]{1}[0-9]{9}$/.test(mobileValue);
+
+		   // Validate name (not empty or null)
+		   const nameValue = nameInput.value.trim();
+		   const isNameValid = nameValue !== "" && nameValue !== null;
+
+		   if (!isMobileValid) {
+		      errorMessage.textContent = "Please enter a valid 10-digit mobile number.";
+		      errorMessage.style.color = "red";
+		   } else if (!isNameValid) {
+			   errorMessage1.textContent = "Please enter your name";
+			   errorMessage1.style.color = "red";
+		   } else {
+		      // Clear the error message and allow form submission
+		      errorMessage.textContent = "";
+		      return true; // Form submission will proceed
+		   }
+
+		   // Prevent form submission
+		   return false;
+		   
+	
+		}
+
+    // Event listener for the "edit profile" button click
+    document.querySelector(".edit-profile").addEventListener("click", () => {
+        editPopUpShow.classList.add("open-message");
+    });
+
+    // Event listener for the "close profile details" button click
+    document.querySelector(".close-profile-details").addEventListener("click", () => {
+        editPopUpShow.classList.remove("open-message");
+        window.location.reload(); 
+    });
     </script>
 
 </body>

@@ -262,7 +262,7 @@ main {
 	flex-direction: column;
 	align-items: center;
 	margin-left: 7vw;
-	margin-top: 70vh;
+	margin-top: 69vh;
 	position: fixed;
 }
 
@@ -283,17 +283,18 @@ main {
 	animation-timing-function: ease-in-out;
 }
 
-@
-keyframes bubble { 0% {
-	transform: translateY(0);
-}
-50%{
-transform:translateY(-10px);
-}
-100%{
-transform:translateY(0);   
-}
-}
+
+  @keyframes bubble {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
 .like img, .dislike img {
 	width: 30px;
 	height: 30px;
@@ -431,7 +432,7 @@ transform:translateY(0);
 		2px;
 }
 
-@
+
 .averageRating h1 {
 	font-size: 34px;
 }

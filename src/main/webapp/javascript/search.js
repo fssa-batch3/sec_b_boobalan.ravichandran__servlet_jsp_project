@@ -8,7 +8,7 @@
 	        if (!response.ok) {
 	            throw new Error("HTTP error! Status: "+ response.status);
 	        }
-
+	        
 	        const responseData = await response.json();
 
 	        // Access the array of products from the 'data' property
@@ -47,6 +47,8 @@
 	  a_search.innerText = allProducts[i].name;
 	  li_search.append(a_search);
 	}
+	
+	//System.out.print("suggestions", suggestions);
 	
 	// get input and suggestion box elements
 	const searchWrapper = document.querySelector(".search-input");

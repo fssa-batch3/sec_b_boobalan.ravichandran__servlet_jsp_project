@@ -182,7 +182,7 @@ font-family: 'Neuton', serif;
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<h3 class="animate-charcter">Today's Offers</h3>
+				<h3 class="animate-charcter">All Products</h3>
 			</div>
 		</div>
 	</div>
@@ -224,7 +224,26 @@ font-family: 'Neuton', serif;
 		%>
 	</div>
 
-
+    <div class="technologies-container">
+        <div class="technologies_title">
+            <h2>New Technologies in Agriculture</h2>
+        </div>
+        <div class="new-technologies"> 
+            <div class="new-technology-container">
+                <img src="./assets/images/new_tech1.gif" alt="new technology">
+            </div>
+            <div class="new-technology-container">
+                <img src="./assets/images/new_tech2.gif" alt="new technology">
+            </div>
+         
+            <div class="new-technology-container">
+                <img src="./assets/images/new_tech4.gif" alt="new technology">
+            </div>
+        </div>
+        <div class="view-more-details">
+          <a href="<%=request.getContextPath()%>/new_technologies">  <h3>View details -></h3></a>
+        </div>
+       </div>
 
 
 	<div class="fab">
@@ -309,6 +328,28 @@ font-family: 'Neuton', serif;
 
 	<script src="<%=request.getContextPath()%>/javascript/search.js"> </script>
 	<script>
+	async function fetchData() {
+		  const url = 'https://crops.p.rapidapi.com/?commonName=Trigo&specieName=Triticum&category=Cereales%20de%20grano&subcategory=De%20invierno&fruitType=cariopsis&family=Poaceae&cropCycle=anual&consistency=herb%C3%A1cea';
+		  const options = {
+		    method: 'GET',
+		    headers: {
+		      'X-RapidAPI-Key': '9e95e4d8c4msheccbdbac1ad9b6ep1d343cjsn58c3dcf67c50',
+		      'X-RapidAPI-Host': 'crops.p.rapidapi.com'
+		    }
+		  };
+
+		  try {
+		    const response = await fetch(url, options);
+		    const result = await response.text();
+		    console.log("Agri",result);
+		  } catch (error) {
+		    console.error(error);
+		  }
+		}
+
+		// Call the async function to fetch data
+		fetchData();
+
 
 	let slideIndex = 0;
 	let timeoutID;
@@ -363,6 +404,7 @@ font-family: 'Neuton', serif;
 	}
 	
 	
+
 	
 	</script>
 </body>

@@ -68,11 +68,12 @@ public class CreateProductServlet extends HttpServlet {
 		} catch (ServiceException | ValidationException e) {
 
 //			e.printStackTrace();
-			out.println(e.getMessage());
-
+			//out.println(e.getMessage());
+			request.setAttribute("PRODUCT_DETAILS", product);
+			System.out.println("PRODUCT_DETAILS attribute: " + product);
 			//response.sendRedirect("new?error=" + e.getMessage());
 			request.setAttribute("ERRORDETAILS", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("new");
+			RequestDispatcher rd = request.getRequestDispatcher("/add_product.jsp");
 			rd.forward(request, response);
 		}
 	}

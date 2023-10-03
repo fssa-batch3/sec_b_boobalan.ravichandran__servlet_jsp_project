@@ -25,6 +25,7 @@
 .no-product-found img{
 width:35vw;
 height:60vh;
+margin-left:25vw;
 
 }
 </style>

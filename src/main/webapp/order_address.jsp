@@ -12,6 +12,10 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
 	rel="stylesheet">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css">
+	<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Delivery address</title>
 <style>
 * {
@@ -328,12 +332,7 @@ color:black;
 </head>
 <body>
 
-	<header>
-		<div class="fert-logo">
-			<a href="<%=request.getContextPath()%>/index"><img
-				src="https://iili.io/Hyihp7S.md.png" alt="logo"></a>
-		</div>
-	</header>
+	<jsp:include page="/header.jsp"></jsp:include>
 	<main>
 
 		<div class="address-title-head">
@@ -509,7 +508,9 @@ color:black;
 
 		</div>
 	</main>
-
+	
+     <script src="<%=request.getContextPath()%>/javascript/search.js"></script>
+	
 	<script type="text/javascript">
 
      // get the class. which div class have to display none
@@ -700,5 +701,6 @@ function confirmOrder() {
      });
   
      </script>
+     
 </body>
 </html>
