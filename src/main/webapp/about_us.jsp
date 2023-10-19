@@ -87,6 +87,11 @@
                         <img src="./assets/images/about us/abt5.webp" alt="about5">
                     </div>
                 </div>
+                
+                <div>
+              <!--   <h2>Getting Started with Fert Agri Boomi: Registration and Login Guide</h2>
+                <video src=""></video> -->
+                </div>
             </div>
     
         </main>

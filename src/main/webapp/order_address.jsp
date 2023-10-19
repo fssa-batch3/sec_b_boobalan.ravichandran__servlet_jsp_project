@@ -390,15 +390,6 @@ color:black;
 			%>
 		</div>
 
-		<%
-		Object attribute = request.getSession().getAttribute("ADDRESS_ID");
-		if (attribute instanceof Integer && (int) attribute > 0) {
-			int loggedUserUniqueEmail = (int) attribute;
-		%>
-		<h1><%=loggedUserUniqueEmail%></h1>
-		<%
-		}
-		%>
 <%if (addressList != null && !addressList.isEmpty()) {%>
 		<div class="add-new-address-div">
 			<p>+</p>
@@ -578,7 +569,7 @@ color:black;
          newAddress.classList.add("show-new-address");
      });
      const mobileInput = document.getElementById("mobile");
- 	const formGroup = document.querySelector(".form-group");
+ 
  	const errorMessage = document.querySelector(".error");
 
  	mobileInput.addEventListener("input", () => {
@@ -586,8 +577,7 @@ color:black;
  	    const isValidInput = /^[6-9]{1}[0-9]{9}$/.test(inputValue);
  	   //   /^[6-9]\d{9}$/.test(inputValue) && !/^\d*(\d)\1{9}\d*$/.test(inputValue); // use regex to match the updated criteria
  	    if (!isValidInput || inputValue === "") {
- 	      formGroup.classList.remove("valid");
- 	      formGroup.classList.add("invalid");
+ 	    
  	      if (inputValue === "") {
  	        errorMessage.textContent = "Please enter a mobile number.";
  	      } else if (/^\d+$/.test(inputValue)) {
@@ -597,8 +587,7 @@ color:black;
  	      }
  	      errorMessage.style.color = "red";
  	    } else {
- 	      formGroup.classList.remove("invalid");
- 	      formGroup.classList.add("valid");
+ 	     
  	      errorMessage.textContent = "";
  	    }
  	});
@@ -679,6 +668,9 @@ function confirmOrder() {
 
 
      document.addEventListener("DOMContentLoaded", function() {
+
+    	    const mobileInput = document.getElementById("mobile");
+    	    const pincodeInput = document.getElementById("pincode");
          const form = document.getElementById("save-address");
          form.addEventListener("submit", function(event) {
              // Check if any of the input fields are empty
@@ -697,6 +689,40 @@ function confirmOrder() {
                  event.preventDefault();
                  alert("Please fill in all required fields.");
              }
+             
+             // Perform your validation checks here
+             const mobileValue = mobileInput.value.trim();
+             const pincodeValue = pincodeInput.value.trim();
+             const mobileRegex = /^[6-9]{1}[0-9]{9}$/;
+             const pincodeRegex = /^6\d{5}$/;
+
+             if (!mobileRegex.test(mobileValue) || !pincodeRegex.test(pincodeValue)) {
+                 // Prevent the form from submitting
+                 event.preventDefault();
+
+                 // Show error messages or handle validation errors here
+                 const errorMessage = document.querySelector(".error");
+                 const errorMessage1 = document.querySelector(".error1");
+
+                 if (!mobileRegex.test(mobileValue) || mobileValue === "") {
+                     errorMessage.textContent = "Invalid mobile number.";
+                     errorMessage.style.color = "red";
+                 } else {
+                     errorMessage.textContent = "";
+                 }
+
+                 if (!pincodeRegex.test(pincodeValue) || pincodeValue === "") {
+                     errorMessage1.textContent = "Invalid pincode.";
+                     errorMessage1.style.color = "red";
+                 } else {
+                     errorMessage1.textContent = "";
+                 }
+
+                 return false; // Prevent the form from submitting
+             }
+
+             // If validation passes, the form will submit as usual
+    
          });
      });
   

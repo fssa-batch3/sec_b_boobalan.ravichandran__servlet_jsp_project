@@ -6,6 +6,9 @@
 	if (loggedUserUniqueEmail == null) {
 	%>
 <style>
+a{
+text-decoration:none;
+}
 .about_us_details{
 margin-right:7vw;
 margin-left:4vw;
@@ -87,7 +90,7 @@ margin-left:4vw;
 					<a href="<%= request.getContextPath()%>/products?category_id=9">BIO INSECTICIDES</a> <a
 						href="<%= request.getContextPath()%>/products?category_id=10">BIO FUNGICIDES</a> <a
 						href="<%= request.getContextPath()%>/products?category_id=11">BIO NEMATICIDES</a> <a
-						href="<%= request.getContextPath()%>/products?category_id=12">BIO VIRCIDES</a>
+						href="<%= request.getContextPath()%>/products?category_id=12">BIO VIRICIDES</a>
 				</div>
 			</div>
 			<div class="dropdown2">
@@ -114,7 +117,9 @@ margin-left:4vw;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	text-decoration:none;
 }
+
 
 body {
 	caret-color: transparent;
@@ -602,7 +607,7 @@ margin-left:4vw;
 						<a href="<%= request.getContextPath()%>/products?category_id=9">BIO INSECTICIDES</a> <a
 							href="<%= request.getContextPath()%>/products?category_id=10">BIO FUNGICIDES</a> <a
 							href="<%= request.getContextPath()%>/products?category_id=11">BIO NEMATICIDES</a> <a
-							href="<%= request.getContextPath()%>/products?category_id=12">BIO VIRCIDES</a>
+							href="<%= request.getContextPath()%>/products?category_id=12">BIO VIRICIDES</a>
 					</div>
 				</div>
 				<div class="dropdown2">

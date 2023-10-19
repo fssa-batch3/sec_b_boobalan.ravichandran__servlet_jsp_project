@@ -34,8 +34,16 @@
 	padding: 5vh 10vw;
 }
 
+
 .total-orders-conatiner {
-	padding: 1vh 10vw 5vh 10vw;
+    padding: 0vh 5vw 5vh 10vw;
+    overflow-y: scroll;
+    max-height: 150vh;
+    margin-top: 5vh;
+    margin-bottom: 7vh;
+}
+.total-orders-conatiner::-webkit-scrollbar {
+    width: 2px; /* Adjust the width as needed */
 }
 
 .orders_container {
@@ -43,7 +51,7 @@
 		rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 	width: 78.6vw;
 	min-height: 40vh;
-	margin-top: 8vh;
+	margin-top: 3vh;
 	border-radious: 10px;
 }
 

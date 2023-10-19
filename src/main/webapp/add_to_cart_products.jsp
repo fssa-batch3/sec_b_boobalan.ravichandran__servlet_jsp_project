@@ -442,6 +442,9 @@ color: rgb(0, 104, 195);
 font-style: italic;
 font-weight:300;
 }
+del{
+  text-decoration: line-through;
+}
 </style>
 </head>
 <body>
@@ -756,12 +759,12 @@ function processAllProductsDetails(loadProducts) {
         const discount = selectedQuantity * loadProduct.productDiscount;
         const actualPrice = selectedQuantity * loadProduct.productPrice;
         const currePrice = actualPrice - discount;
-        productPrice.textContent = '\u20B9 ' + currePrice;
+        productPrice.textContent = '\u20B9' + currePrice;
 
         // Create a del element for the original price
         const actualPriceElement = document.createElement('del');
         actualPriceElement.id = 'actual_price';
-        actualPriceElement.textContent = '\u20B9 ' + loadProduct.productPrice;
+        actualPriceElement.textContent = '\u20B9' + loadProduct.productPrice;
 
         // Append price elements to the price div
         priceDiv.appendChild(productPrice);
@@ -770,7 +773,7 @@ function processAllProductsDetails(loadProducts) {
         // Create an h3 element for the discount
         const discountElement = document.createElement('h3');
         discountElement.id = 'discount';
-        discountElement.textContent = 'You Save: \u20B9 ' + discount;
+        discountElement.textContent = 'You Save: \u20B9' + discount;
 
         // Append product details to the anchor, and the anchor to cart22
         productDetailsAnchor.appendChild(productName);

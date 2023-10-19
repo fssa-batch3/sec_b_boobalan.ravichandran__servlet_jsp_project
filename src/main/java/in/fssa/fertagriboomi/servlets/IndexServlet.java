@@ -27,13 +27,12 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<Product> productList;
+		
 		try {
-			productList = new ProductService().getAllProducts();
+			List<Product> productList = new ProductService().getAllProducts();
 			request.setAttribute("PRODUCTLIST", productList);
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-			dispatcher.forward(request, response);
+             RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+			 dispatcher.forward(request, response);
 		} catch (ServiceException e) {
 
 			e.printStackTrace();

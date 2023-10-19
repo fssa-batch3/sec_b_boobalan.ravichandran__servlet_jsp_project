@@ -23,7 +23,7 @@
 
 	//Call the function to fetch product data
 	getAllProducts();
-	const rootPath = window.location.origin;
+
 	// function to process or display the data
 
 	function getAllProductsDetails(allProducts) {

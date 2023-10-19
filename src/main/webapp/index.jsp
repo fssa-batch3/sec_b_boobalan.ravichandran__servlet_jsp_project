@@ -1,4 +1,3 @@
-
 <%@page import="in.fssa.fertagriboomi.model.Product"%>
 <%@page import="java.util.List"%>
 
@@ -190,6 +189,8 @@ font-family: 'Neuton', serif;
 
 		<%
 		List<Product> productsList = (List<Product>) request.getAttribute("PRODUCTLIST");
+		
+		if(productsList != null){
 		for (Product product : productsList) {
 		%>
 		<div class="today">
@@ -220,7 +221,7 @@ font-family: 'Neuton', serif;
 		</div>
 
 		<%
-		}
+		}}
 		%>
 	</div>
 
@@ -300,6 +301,7 @@ font-family: 'Neuton', serif;
 		</tr>
 
 		<%
+		if(productList != null){
 		for (Product product : productList) {
 		%>
 		<tr>
@@ -317,7 +319,7 @@ font-family: 'Neuton', serif;
 			<td><%=product.isActive()%></td>
 		</tr>
 		<%
-		}
+		}}
 		%>
 	</table>
 

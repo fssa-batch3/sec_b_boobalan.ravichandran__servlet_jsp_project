@@ -60,8 +60,12 @@ public class LoginUserServlet extends HttpServlet {
 //			e.printStackTrace();
 //			throw new ServletException(e);
 			String getError = e.getMessage();
+			request.setAttribute("EMAIL", email);
+			request.setAttribute("PASSWORD", password);
+			request.setAttribute("ERROR", getError);
 
-			response.sendRedirect("login?error=" + getError);
+	        RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+	        rd.forward(request, response);
 		}
 
 	}

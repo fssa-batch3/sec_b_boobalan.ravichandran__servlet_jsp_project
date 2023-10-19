@@ -192,6 +192,10 @@ body {
 </style>
 </head>
 <body>
+
+<% String email = (String)request.getAttribute("EMAIL");
+String password = (String)request.getAttribute("PASSWORD");
+ %>
 	<div class="login_container">
 		<div class="login_logo">
 			<img src="https://iili.io/J97TJJs.png" alt="login icon">
@@ -204,14 +208,17 @@ body {
 					<h1>Sign in</h1>
 					<div class="form-group">
 						<input type="text" id="email" class="form-control" name="email"
-							value="rboomibaln459@gmail.com" required autofocus> <label
+							value="<%= (email != null) ? email : "" %>" required autofocus> <label
 							for="mobile" class="form-label">Email Address</label>
+					
+					<!-- value="rboomibaln459@gmail.com" -->
 					</div>
 
 					<div class="form-group form-group3">
 						<input type="password" id="txtPassword" name="password"
-							class="form-control" value="Abcd@1234" required> <label
+							class="form-control" value="<%= (password != null) ? password : "" %>" required> <label
 							for="txtPassword" class="form-label">Enter Your Password</label>
+					<!--  value="Abcd@1234" -->
 					</div>
 
 					<div>
@@ -232,7 +239,7 @@ body {
 			</div>
 
 			<%
-			String err = request.getParameter("error");
+			String err = (String)request.getAttribute("ERROR");
 			%>
 			<%
 			if (err != null) {

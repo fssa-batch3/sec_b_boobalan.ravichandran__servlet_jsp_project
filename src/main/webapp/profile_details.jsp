@@ -702,14 +702,14 @@ input[type="email"] {
 					</div>
 					<div class="error1"></div>
 					<div class="user-personal-details">
-						<label for="mobile">Phone Number:</label> <input type="text"
+						<label for="update-mobile">Phone Number:</label> <input type="text"
 							id="update-mobile" name="phone"
 							value="<%=userDetails.getPhoneNumber()%>" required
 							pattern="[0-9].{9}" title="Enter 10 number only" maxlength="10">
 					</div>
 					<div class="error"></div>
 					<div class="user-personal-details">
-						<label for="email">Email Address:</label> <input type="email"
+						<label for="phone">Email Address:</label> <input type="email"
 							id="phone" name="email" value="<%=userDetails.getEmail()%>"
 							readonly>
 					</div>
