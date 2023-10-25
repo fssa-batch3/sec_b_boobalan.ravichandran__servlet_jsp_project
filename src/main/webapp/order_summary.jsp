@@ -29,7 +29,7 @@
     justify-content: center;
     align-items: center;
     margin: auto;
-    background-color: black;
+    background-color: #efefef47;
     caret-color: transparent;
     height:100vh;
   }

@@ -54,13 +54,13 @@ public class JSONUtil {
           }
 
           
-          System.out.println("json"+requestData);
+          //System.out.println("json"+requestData);
           // Parse the JSON data into a Java object
           ObjectMapper objectMapper = new ObjectMapper();
           Map<String, List<Map<String, Object>>> jsonData = objectMapper.readValue(requestData.toString(), new TypeReference<Map<String, List<Map<String, Object>>>>() {});
 
           
-          System.out.print(jsonData);
+          //System.out.print(jsonData);
           // Get the productsInOrder list
           List<Map<String, Object>> data = jsonData.get(key);
           return data;

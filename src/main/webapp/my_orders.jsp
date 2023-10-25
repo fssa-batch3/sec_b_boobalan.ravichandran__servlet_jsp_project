@@ -1,4 +1,5 @@
 
+<%@page import="java.util.Collections"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="in.fssa.fertagriboomi.service.OrdersService"%>
 <%@page import="in.fssa.fertagriboomi.model.OrderItems"%>
@@ -38,7 +39,7 @@
 .total-orders-conatiner {
     padding: 0vh 5vw 5vh 10vw;
     overflow-y: scroll;
-    max-height: 150vh;
+    max-height: 350vh;
     margin-top: 5vh;
     margin-bottom: 7vh;
 }
@@ -243,6 +244,7 @@ a {
 		java.sql.Timestamp deliveryDate = null; // Initialize with null or any default value
 
 		List<Orders> ordersList = (List<Orders>) request.getAttribute("MY_ORDERS");
+		Collections.reverse(ordersList);
 		if (ordersList != null && !ordersList.isEmpty()) {
 			for (Orders order : ordersList) {
 				DeliveryAddresses address = new DeliveryAddressService().findAddressById(order.getAddressId());
