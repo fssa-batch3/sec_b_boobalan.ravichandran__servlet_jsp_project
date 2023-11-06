@@ -725,6 +725,16 @@ function confirmOrder() {
     
          });
      });
+     
+  // Listen for the beforeunload event
+     window.addEventListener("beforeunload", function(event) {
+         // Check if the addToCartStatus key exists in local storage
+         if (localStorage.getItem("addToCartStatus") !== null) {
+             // Remove the addToCartStatus key from local storage
+             localStorage.removeItem("addToCartStatus");
+         }
+     });
+
   
      </script>
      

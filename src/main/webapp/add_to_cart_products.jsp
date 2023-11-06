@@ -616,7 +616,7 @@ async function getAllProducts() {
         });
 
         if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            throw new Error('HTTP error! Status:' + response.status);
         }
 
         const responseData = await response.json();
@@ -999,16 +999,17 @@ selectQuantity.addEventListener('change', function () {
         .then(response => {
             if (response.ok) {
             	window.location.href = '/fertagriboomiweb/product/details/order_summary/new_address';
+            	localStorage.setItem("addToCartStatus", "True");
                 console.log("Order placed successfully.");
             } else {
             	response.text();
-                // Handle error response here
+                // Handle error response
                 console.error("Failed to place the order.");
                 alert(response);
             }
         })
         .catch(error => {
-            // Handle network or other errors here
+            // Handle network or other errors 
             console.error("An error occurred while placing the order:", error);
         });
     });

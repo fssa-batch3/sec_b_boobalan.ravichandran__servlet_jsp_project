@@ -198,7 +198,7 @@ String password = (String)request.getAttribute("PASSWORD");
  %>
 	<div class="login_container">
 		<div class="login_logo">
-			<img src="https://iili.io/J97TJJs.png" alt="login icon">
+			<img src="<%=request.getContextPath()%>/assets/images/login.png" alt="login icon">
 		</div>
 		<div>
 			<div class="box">
@@ -208,15 +208,15 @@ String password = (String)request.getAttribute("PASSWORD");
 					<h1>Sign in</h1>
 					<div class="form-group">
 						<input type="text" id="email" class="form-control" name="email"
-							value="<%= (email != null) ? email : "" %>" required autofocus> <label
+							value="rboomibaln459@gmail.com" required autofocus> <label
 							for="mobile" class="form-label">Email Address</label>
 					
-					<!-- value="rboomibaln459@gmail.com" -->
+					
 					</div>
 
 					<div class="form-group form-group3">
 						<input type="password" id="txtPassword" name="password"
-							class="form-control" value="<%= (password != null) ? password : "" %>" required> <label
+							class="form-control" value="Abcd@1234" required> <label
 							for="txtPassword" class="form-label">Enter Your Password</label>
 					<!--  value="Abcd@1234" -->
 					</div>

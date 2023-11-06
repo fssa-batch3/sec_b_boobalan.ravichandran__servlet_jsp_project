@@ -82,8 +82,9 @@ margin-left:25vw;
 			}else{
 			%>
 			<div class="no-product-found">
-			<img src="https://iili.io/JJnaMP9.jpg" alt="no product found">
+			<img src="<%=request.getContextPath()%>/assets/images/no-product-found.jpg" alt="no product found">
 			</div>
+			<!-- https://iili.io/JJnaMP9.jpg -->
 			<%} %>
 		</div>
 	</div>

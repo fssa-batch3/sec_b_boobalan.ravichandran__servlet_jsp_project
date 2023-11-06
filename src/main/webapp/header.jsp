@@ -571,10 +571,11 @@ margin-left:4vw;
 											src="https://iili.io/HyiOB24.th.png" id="wish"><span
 											id="wish_span_count"></span>
 											<p id="wish_name">Wishlist</p> </a></li>
+										<!-- 	https://iili.io/HyiOQuS.md.png -->
 									
 									<li class="hero_list11" id="cart_icon"><a
 										href="<%= request.getContextPath()%>/add_to_cart"><img
-											src="https://iili.io/HyiOQuS.md.png" id="cart"><span
+											src="<%=request.getContextPath()%>/assets/images/shopping.png" id="cart"><span
 											id="span_count"></span>
 											<p id="cart_name">Cart</p></a></li> <a href="<%= request.getContextPath()%>/profile_details"
 										id="profile_icon"><img class="img1"

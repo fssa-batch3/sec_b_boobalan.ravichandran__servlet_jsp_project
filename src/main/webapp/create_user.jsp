@@ -55,7 +55,7 @@ margin-top:6vh;
 <% User user = (User)request.getAttribute("USER_DETAILS"); %>
 <div class="register-container">
 <div class="sign-up">
- <img src="https://iili.io/JJYU7Pn.png" alt="signup" >
+ <img src="<%=request.getContextPath()%>/assets/images/register.png" alt="signup" >
 </div>
 <div class="box">
     <form class="form" action="create" method="post">

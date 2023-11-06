@@ -90,9 +90,10 @@ font-family: 'Neuton', serif;
 				<h2 class="off">Bio Fertilizers</h2>
 			</a>
 		</div>
+		<!-- https://iili.io/J9TH9UJ.jpg -->
 		<div class="offers">
 			<a href="products?category_id=9"> <img
-				src="https://iili.io/J9TH9UJ.jpg" alt="Pesticides products"
+				src="https://bhangerinsecticides.com/wp-content/uploads/2022/01/Insecticide.png" alt="Pesticides products"
 				class="offers11">
 				<h2 class="off1">Insecticides</h2>
 			</a>
@@ -110,9 +111,10 @@ font-family: 'Neuton', serif;
 				<h2 class="off3">Growth Promoters</h2>
 			</a>
 		</div>
+		<!-- https://iili.io/J9THi1n.png -->
 		<div class="offers">
 			<a href="products?category_id=11"> <img
-				src="https://iili.io/J9THi1n.png" alt="Herbicides" class="offers11">
+				src="https://bighaat-prodv2-media-cdn.azureedge.net/wsfbanners/fungicides_Web-Tiles_v1.jpg" alt="Herbicides" class="offers11">
 				<h2 class="off4">Nematicides</h2>
 			</a>
 		</div>
@@ -281,52 +283,8 @@ font-family: 'Neuton', serif;
 	<jsp:include page="/footer.jsp"></jsp:include>
 
 
-	<h1>List of Products</h1>
-	<br>
+	
 
-	<%
-	List<Product> productList = (List<Product>) request.getAttribute("PRODUCTLIST");
-	%>
-
-	<table>
-		<tr>
-			<th>Name</th>
-
-			<th>Description</th>
-			<th>Image</th>
-			<th>Pages</th>
-			<th>Price</th>
-			<th>discount</th>
-			<th>Status</th>
-		</tr>
-
-		<%
-		if(productList != null){
-		for (Product product : productList) {
-		%>
-		<tr>
-			<td><%=product.getName()%></td>
-
-
-			<td><%=product.getDescription()%></td>
-			<td><img src="<%=product.getImageURL()%>"
-				alt="<%=product.getName()%> Image" width="130" height="130"></td>
-			<td><a href="product/details?product_id=<%=product.getId()%>">Details</a>
-				<a href="product/edit?product_id=<%=product.getId()%>">Update</a> <a
-				href="product/delete?product_id=<%=product.getId()%>">Delete</a></td>
-			<td><%=product.getPrice()%></td>
-			<td><%=product.getDiscount()%></td>
-			<td><%=product.isActive()%></td>
-		</tr>
-		<%
-		}}
-		%>
-	</table>
-
-
-	<button class="create_btn">
-		<a href="product/new">Create</a>
-	</button>
 
 	<script src="<%=request.getContextPath()%>/javascript/search.js"> </script>
 	<script>

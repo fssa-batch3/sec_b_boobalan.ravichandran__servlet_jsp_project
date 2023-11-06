@@ -42,8 +42,6 @@ public class AddToCartToAddressServlet extends HttpServlet {
     
         try {
             // Retrieve the JSON data from the request
-
-            // Store productsInOrder in the session
             HttpSession session = request.getSession();
             List<Map<String, Object>> productsInOrder = JSONUtil.getJSONArray(request, "productsInOrder");
             session.setAttribute("productsInOrder", productsInOrder);
